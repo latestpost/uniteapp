@@ -50,3 +50,7 @@ APP
 In addition to access to the above the App needs to have the following:
 Available as IOS and Android application in Itunes and Google Store
 Push notification of alerts
+
+
+RUN:
+ionic serve
