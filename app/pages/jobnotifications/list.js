@@ -22,7 +22,7 @@ export class JobNotificationsPage {
     this.items = [];
     for(let i = 1; i < 5; i++) {
       this.items.push({
-        title: 'Job ' + i,
+        title: 'Job Notification ' + i,
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });

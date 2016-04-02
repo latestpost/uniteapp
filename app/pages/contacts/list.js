@@ -5,7 +5,7 @@ import {ItemDetailsPage} from '../item-details/item-details';
 @Page({
   templateUrl: 'build/pages/contacts/list.html'
 })
-export class JobsPage {
+export class ContactsPage {
   static get parameters() {
     return [[NavController], [NavParams]];
   }
@@ -16,15 +16,13 @@ export class JobsPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
     this.items = [];
-    for(let i = 1; i < 5; i++) {
+    for(let i = 1; i < 25; i++) {
       this.items.push({
-        title: 'Job ' + i,
+        name: 'Fred Smith',
+        title: 'Contact ' + i,
         note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+        icon: 'person'
       });
     }
   }

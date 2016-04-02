@@ -22,7 +22,7 @@ export class TrainingPage {
     this.items = [];
     for(let i = 1; i < 5; i++) {
       this.items.push({
-        title: 'Job ' + i,
+        title: 'Training item ' + i,
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
