@@ -24,26 +24,22 @@ class MyApp {
   constructor(app, platform, menu) {
     // set up our app
     this.app = app;
+    this.app.main = this;
     this.platform = platform;
     this.menu = menu;
     this.initializeApp();
+    this.loggedIn = false;
 
 
     // set our app's pages
-    this.pages = [
-      { icon: 'home', title: 'Home', component: HelloIonicPage },
-      { icon: 'contact', title: 'Reps Contact List', component: ContactsPage },
-      { icon: 'document', title: 'Construction Agreements', component: AgreementsPage },
-      { icon: 'wifi', title: 'Wage Rates', component: RatesPage },
-      { icon: 'basket', title: 'News Feed', component: NewsPage },
-      { icon: 'calendar', title: 'Training', component: TrainingPage },
-      { icon: 'people', title: 'Search Jobs', component: JobsPage },
-      { icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage },
+    this.app.pages = [
       { icon: 'login', title: 'Login', component: LoginPage },
     ];
-
-    // make HelloIonicPage the root (or first) page
     this.rootPage = LoginPage;
+    if (this.loggedIn){
+      this.rootPage = HelloIonicPage;
+      this.setNavLoggedin();
+    }
   }
 
   initializeApp() {
@@ -60,5 +56,20 @@ class MyApp {
     // navigate to the new page if it is not the current page
     let nav = this.app.getComponent('nav');
     nav.setRoot(page.component);
+  }
+
+  setLoggedin(){
+    this.pages = [
+      { icon: 'home', title: 'Home', component: HelloIonicPage },
+      { icon: 'contact', title: 'Reps Contact List', component: ContactsPage },
+      { icon: 'document', title: 'Construction Agreements', component: AgreementsPage },
+      { icon: 'wifi', title: 'Wage Rates', component: RatesPage },
+      { icon: 'basket', title: 'News Feed', component: NewsPage },
+      { icon: 'calendar', title: 'Training', component: TrainingPage },
+      { icon: 'people', title: 'Search Jobs', component: JobsPage },
+      { icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage },
+      { icon: 'login', title: 'Login', component: LoginPage },
+    ];
+    this.loggedIn = true;
   }
 }

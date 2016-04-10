@@ -47,15 +47,19 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
 
     // set up our app
     this.app = app;
+    this.app.main = this;
     this.platform = platform;
     this.menu = menu;
     this.initializeApp();
+    this.loggedIn = false;
 
     // set our app's pages
-    this.pages = [{ icon: 'home', title: 'Home', component: _helloIonic.HelloIonicPage }, { icon: 'contact', title: 'Reps Contact List', component: _list6.ContactsPage }, { icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { icon: 'wifi', title: 'Wage Rates', component: _list4.RatesPage }, { icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { icon: 'people', title: 'Search Jobs', component: _list2.JobsPage }, { icon: 'wifi', title: 'Job Notifications', component: _list3.JobNotificationsPage }, { icon: 'login', title: 'Login', component: _login.LoginPage }];
-
-    // make HelloIonicPage the root (or first) page
+    this.app.pages = [{ icon: 'login', title: 'Login', component: _login.LoginPage }];
     this.rootPage = _login.LoginPage;
+    if (this.loggedIn) {
+      this.rootPage = _helloIonic.HelloIonicPage;
+      this.setNavLoggedin();
+    }
   }
 
   _createClass(MyApp, [{
@@ -75,6 +79,12 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
       // navigate to the new page if it is not the current page
       var nav = this.app.getComponent('nav');
       nav.setRoot(page.component);
+    }
+  }, {
+    key: 'setLoggedin',
+    value: function setLoggedin() {
+      this.pages = [{ icon: 'home', title: 'Home', component: _helloIonic.HelloIonicPage }, { icon: 'contact', title: 'Reps Contact List', component: _list6.ContactsPage }, { icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { icon: 'wifi', title: 'Wage Rates', component: _list4.RatesPage }, { icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { icon: 'people', title: 'Search Jobs', component: _list2.JobsPage }, { icon: 'wifi', title: 'Job Notifications', component: _list3.JobNotificationsPage }, { icon: 'login', title: 'Login', component: _login.LoginPage }];
+      this.loggedIn = true;
     }
   }]);
 
@@ -435,6 +445,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.LoginPage = undefined;
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _dec, _class;
 
 var _ionicAngular = require('ionic-angular');
@@ -443,9 +455,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
   templateUrl: 'build/pages/login/login.html'
-}), _dec(_class = function LoginPage() {
-  _classCallCheck(this, LoginPage);
-}) || _class);
+}), _dec(_class = function () {
+  _createClass(LoginPage, null, [{
+    key: 'parameters',
+    get: function get() {
+      return [_ionicAngular.IonicApp];
+    }
+  }]);
+
+  function LoginPage(app) {
+    _classCallCheck(this, LoginPage);
+
+    this.app = app;
+  }
+
+  _createClass(LoginPage, [{
+    key: 'login',
+    value: function login() {
+      this.app.main.setLoggedin();
+    }
+  }]);
+
+  return LoginPage;
+}()) || _class);
 
 },{"ionic-angular":334}],10:[function(require,module,exports){
 'use strict';
