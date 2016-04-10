@@ -1,7 +1,7 @@
 import 'es6-shim';
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
+import {HomePage} from './pages/hello-ionic/hello-ionic';
 import {AgreementsPage} from './pages/agreements/list';
 import {JobsPage} from './pages/jobs/list';
 import {JobNotificationsPage} from './pages/jobnotifications/list';
@@ -30,14 +30,13 @@ class MyApp {
     this.initializeApp();
     this.loggedIn = false;
 
-
     // set our app's pages
     this.app.pages = [
       { icon: 'login', title: 'Login', component: LoginPage },
     ];
     this.rootPage = LoginPage;
     if (this.loggedIn){
-      this.rootPage = HelloIonicPage;
+      this.rootPage = HomePage;
       this.setNavLoggedin();
     }
   }
@@ -60,7 +59,7 @@ class MyApp {
 
   setLoggedin(){
     this.pages = [
-      { icon: 'home', title: 'Home', component: HelloIonicPage },
+      { icon: 'home', title: 'Home', component: HomePage },
       { icon: 'contact', title: 'Reps Contact List', component: ContactsPage },
       { icon: 'document', title: 'Construction Agreements', component: AgreementsPage },
       { icon: 'wifi', title: 'Wage Rates', component: RatesPage },
@@ -71,5 +70,6 @@ class MyApp {
       { icon: 'login', title: 'Login', component: LoginPage },
     ];
     this.loggedIn = true;
+    setTimeout(() => { this.rootPage = HomePage; }, 5);
   }
 }

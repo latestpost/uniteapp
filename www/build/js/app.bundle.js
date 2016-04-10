@@ -57,7 +57,7 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
     this.app.pages = [{ icon: 'login', title: 'Login', component: _login.LoginPage }];
     this.rootPage = _login.LoginPage;
     if (this.loggedIn) {
-      this.rootPage = _helloIonic.HelloIonicPage;
+      this.rootPage = _helloIonic.HomePage;
       this.setNavLoggedin();
     }
   }
@@ -83,8 +83,13 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
   }, {
     key: 'setLoggedin',
     value: function setLoggedin() {
-      this.pages = [{ icon: 'home', title: 'Home', component: _helloIonic.HelloIonicPage }, { icon: 'contact', title: 'Reps Contact List', component: _list6.ContactsPage }, { icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { icon: 'wifi', title: 'Wage Rates', component: _list4.RatesPage }, { icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { icon: 'people', title: 'Search Jobs', component: _list2.JobsPage }, { icon: 'wifi', title: 'Job Notifications', component: _list3.JobNotificationsPage }, { icon: 'login', title: 'Login', component: _login.LoginPage }];
+      var _this = this;
+
+      this.pages = [{ icon: 'home', title: 'Home', component: _helloIonic.HomePage }, { icon: 'contact', title: 'Reps Contact List', component: _list6.ContactsPage }, { icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { icon: 'wifi', title: 'Wage Rates', component: _list4.RatesPage }, { icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { icon: 'people', title: 'Search Jobs', component: _list2.JobsPage }, { icon: 'wifi', title: 'Job Notifications', component: _list3.JobNotificationsPage }, { icon: 'login', title: 'Login', component: _login.LoginPage }];
       this.loggedIn = true;
+      setTimeout(function () {
+        _this.rootPage = _helloIonic.HomePage;
+      }, 5);
     }
   }]);
 
@@ -216,7 +221,7 @@ var ContactsPage = exports.ContactsPage = (_dec = (0, _ionicAngular.Page)({
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.HelloIonicPage = undefined;
+exports.HomePage = undefined;
 
 var _dec, _class;
 
@@ -224,10 +229,10 @@ var _ionicAngular = require('ionic-angular');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var HelloIonicPage = exports.HelloIonicPage = (_dec = (0, _ionicAngular.Page)({
+var HomePage = exports.HomePage = (_dec = (0, _ionicAngular.Page)({
   templateUrl: 'build/pages/hello-ionic/hello-ionic.html'
-}), _dec(_class = function HelloIonicPage() {
-  _classCallCheck(this, HelloIonicPage);
+}), _dec(_class = function HomePage() {
+  _classCallCheck(this, HomePage);
 }) || _class);
 
 },{"ionic-angular":334}],5:[function(require,module,exports){
