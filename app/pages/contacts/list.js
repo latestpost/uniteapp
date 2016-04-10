@@ -1,31 +1,41 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
-import {ItemDetailsPage} from '../item-details/item-details';
-
+import {ItemDetailsPage} from './item-details';
+import {RestService} from '../../services/RestService';
 
 @Page({
-  templateUrl: 'build/pages/contacts/list.html'
+  templateUrl: 'build/pages/contacts/list.html',
+  providers: [RestService]
 })
 export class ContactsPage {
   static get parameters() {
-    return [[NavController], [NavParams]];
+    return [[NavController], [NavParams], [RestService]];
   }
 
-  constructor(nav, navParams) {
+  constructor(nav, navParams, restService) {
+    this.restService = restService;
     this.nav = nav;
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
 
+    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
+    'american-football', 'boat', 'bluetooth', 'build'];
+
     this.items = [];
-    for(let i = 1; i < 25; i++) {
+    for(let i = 1; i < 5; i++) {
       this.items.push({
-        name: 'Fred Smith',
-        title: 'Contact ' + i,
-        note: 'This is item #' + i,
-        icon: 'person'
+        title: 'Job ' + i,
+        description: 'This is item #' + i,
+        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
   }
+
+  ngOnInit() {
+        this.restService.findContacts().subscribe(
+            data => this.contacts = data
+        );
+    }
 
   itemTapped(event, item) {
      this.nav.push(ItemDetailsPage, {

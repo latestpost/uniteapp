@@ -1,7 +1,7 @@
 import 'es6-shim';
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
-import {HomePage} from './pages/hello-ionic/hello-ionic';
+import {HomePage} from './pages/homepage/homepage';
 import {AgreementsPage} from './pages/agreements/list';
 import {JobsPage} from './pages/jobs/list';
 import {JobNotificationsPage} from './pages/jobnotifications/list';

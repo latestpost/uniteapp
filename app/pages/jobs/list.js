@@ -32,7 +32,7 @@ export class JobsPage {
   }
 
   ngOnInit() {
-        this.restService.findAll().subscribe(
+        this.restService.findJobs().subscribe(
             data => this.jobs = data
         );
     }

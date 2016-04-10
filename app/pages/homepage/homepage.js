@@ -2,7 +2,7 @@ import {Page} from 'ionic-angular';
 
 
 @Page({
-  templateUrl: 'build/pages/hello-ionic/hello-ionic.html'
+  templateUrl: 'build/pages/homepage/homepage.html'
 })
 export class HomePage {
   constructor() {

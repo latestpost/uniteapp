@@ -5,7 +5,8 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 let favorites = [],
-    propertiesURL = SERVER_URL + 'jobs.json'
+    jobsURL = SERVER_URL + 'jobs.json',
+    contactsURL = SERVER_URL + 'contacts.json'
 
 @Injectable()
 export class RestService {
@@ -18,8 +19,14 @@ export class RestService {
         this.http = http;
     }
 
-    findAll() {
-        return this.http.get(propertiesURL)
+    findJobs() {
+        return this.http.get(jobsURL)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    findContacts() {
+        return this.http.get(contactsURL)
             .map(res => res.json())
             .catch(this.handleError);
     }
