@@ -1,13 +1,10 @@
 {
-  "uploadOnSave": true,
+  "uploadOnSave": false,
   "deleteLocal": false,
-  "hostname": "unite4jobs.co.uk",
-  "port": "22",
   "ignore": [
     ".remote-sync.json",
     ".git/**"
   ],
-  "username": "ec2-user",
   "keyfile": "/Users/mikegriffin/Dropbox/certificates",
   "transport": "scp"
 }

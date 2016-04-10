@@ -6,16 +6,13 @@
 </ion-navbar>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+    <ion-list>
+        <button ion-item *ngFor="#job of jobs" (click)="itemTapped($event, job)">
+            <ion-thumbnail item-left>
+                <img src="{{job.thumb}}"/>
+            </ion-thumbnail>
+            <h2>{{job.title}}</h2>
+            <p>{{job.description}}</p>
+        </button>
+    </ion-list>
 </ion-content>

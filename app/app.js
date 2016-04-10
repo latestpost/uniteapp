@@ -9,6 +9,7 @@ import {RatesPage} from './pages/rates/list';
 import {NewsPage} from './pages/news/list';
 import {ContactsPage} from './pages/contacts/list';
 import {TrainingPage} from './pages/training/list';
+import {LoginPage} from './pages/login/login';
 
 
 @App({
@@ -27,6 +28,7 @@ class MyApp {
     this.menu = menu;
     this.initializeApp();
 
+
     // set our app's pages
     this.pages = [
       { icon: 'home', title: 'Home', component: HelloIonicPage },
@@ -36,11 +38,12 @@ class MyApp {
       { icon: 'basket', title: 'News Feed', component: NewsPage },
       { icon: 'calendar', title: 'Training', component: TrainingPage },
       { icon: 'people', title: 'Search Jobs', component: JobsPage },
-      { icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage }
+      { icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage },
+      { icon: 'login', title: 'Login', component: LoginPage },
     ];
 
     // make HelloIonicPage the root (or first) page
-    this.rootPage = HelloIonicPage;
+    this.rootPage = LoginPage;
   }
 
   initializeApp() {
