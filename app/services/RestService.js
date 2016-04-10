@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 let favorites = [],
-    jobsURL = SERVER_URL + 'jobs.json',
+    jobsURL = 'http://www.unite4jobs.co.uk/feed?sector=&location=&limit=50',
     contactsURL = SERVER_URL + 'contacts.json'
 
 @Injectable()
