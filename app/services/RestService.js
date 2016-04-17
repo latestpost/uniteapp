@@ -5,8 +5,12 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/Rx';
 
 let favorites = [],
-    jobsURL = 'http://www.unite4jobs.co.uk/feed?sector=&location=&limit=50',
-    contactsURL = SERVER_URL + 'contacts.json'
+    jobsURL = 'http://www.unite4jobs.co.uk:1401/job',
+    contactsURL = 'http://www.unite4jobs.co.uk:1401/contact',
+    ratesURL = 'http://www.unite4jobs.co.uk:1401/rate',
+    agreementsURL = 'http://www.unite4jobs.co.uk:1401/agreement',
+    trainingURL = 'http://www.unite4jobs.co.uk:1401/training',
+    newsURL = 'http://www.unite4jobs.co.uk:1401/news'
 
 @Injectable()
 export class RestService {

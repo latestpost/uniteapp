@@ -705,8 +705,12 @@ require('rxjs/Rx');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var favorites = [],
-    jobsURL = 'http://www.unite4jobs.co.uk/feed?sector=&location=&limit=50',
-    contactsURL = _config.SERVER_URL + 'contacts.json';
+    jobsURL = 'http://www.unite4jobs.co.uk:1401/job',
+    contactsURL = 'http://www.unite4jobs.co.uk:1401/contact',
+    ratesURL = 'http://www.unite4jobs.co.uk:1401/rate',
+    agreementsURL = 'http://www.unite4jobs.co.uk:1401/agreement',
+    trainingURL = 'http://www.unite4jobs.co.uk:1401/training',
+    newsURL = 'http://www.unite4jobs.co.uk:1401/news';
 
 var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
     _createClass(RestService, null, [{
