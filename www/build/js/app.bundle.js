@@ -29,11 +29,23 @@ var _list7 = require('./pages/training/list');
 
 var _login = require('./pages/login/login');
 
+var _core = require('angular2/core');
+
+var _angular2Jwt = require('angular2-jwt');
+
+var _http = require('angular2/http');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 // http://ionicframework.com/docs/v2/api/config/Config/
 var MyApp = (_dec = (0, _ionicAngular.App)({
   templateUrl: 'build/app.html',
+  providers: [(0, _core.provide)(_angular2Jwt.AuthHttp, {
+    useFactory: function useFactory(http) {
+      return new _angular2Jwt.AuthHttp(new _angular2Jwt.AuthConfig(), http);
+    },
+    deps: [_http.Http]
+  })],
   config: {} }), _dec(_class = function () {
   _createClass(MyApp, null, [{
     key: 'parameters',
@@ -96,7 +108,7 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
   return MyApp;
 }()) || _class);
 
-},{"./pages/agreements/list":2,"./pages/contacts/list":4,"./pages/homepage/homepage":5,"./pages/jobnotifications/list":7,"./pages/jobs/list":9,"./pages/login/login":10,"./pages/news/list":11,"./pages/rates/list":12,"./pages/training/list":13,"es6-shim":387,"ionic-angular":463,"ionic-native":485}],2:[function(require,module,exports){
+},{"./pages/agreements/list":2,"./pages/contacts/list":4,"./pages/homepage/homepage":5,"./pages/jobnotifications/list":7,"./pages/jobs/list":9,"./pages/login/login":10,"./pages/news/list":11,"./pages/rates/list":12,"./pages/training/list":13,"angular2-jwt":16,"angular2/core":146,"angular2/http":147,"es6-shim":387,"ionic-angular":463,"ionic-native":485}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -474,6 +486,8 @@ var _ionicAngular = require('ionic-angular');
 
 var _RestService = require('../../services/RestService');
 
+var _common = require('angular2/common');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
@@ -483,15 +497,19 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
   _createClass(LoginPage, null, [{
     key: 'parameters',
     get: function get() {
-      return [[_ionicAngular.IonicApp], [_RestService.RestService]];
+      return [[_ionicAngular.IonicApp], [_RestService.RestService], [_common.FormBuilder]];
     }
   }]);
 
-  function LoginPage(app, restService) {
+  function LoginPage(app, restService, formBuilder, validators) {
     _classCallCheck(this, LoginPage);
 
     this.app = app;
     this.restService = restService;
+    this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
+      username: ["", _common.Validators.required], // Setting fields as required
+      password: ["", _common.Validators.required]
+    });
   }
 
   _createClass(LoginPage, [{
@@ -499,20 +517,23 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
     value: function login() {
       var _this = this;
 
+      console.log(this.loginForm.value);
       var credentials = {};
-      credentials.email = 'test@test.com';
-      credentials.password = 'testpassword';
-      this.restService.login(credentials).subscribe(function (data) {
-        return _this.contacts = data;
+      credentials.email = this.loginForm.value.username;
+      credentials.password = this.loginForm.value.password;
+      this.restService.login(credentials).subscribe(function (json) {
+        console.log(json);
+        _this.app.main.setLoggedin();
       });
-      this.app.main.setLoggedin();
+
+      this.restService.getJWT();
     }
   }]);
 
   return LoginPage;
 }()) || _class);
 
-},{"../../services/RestService":14,"ionic-angular":463}],11:[function(require,module,exports){
+},{"../../services/RestService":14,"angular2/common":144,"ionic-angular":463}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -728,23 +749,23 @@ var favorites = [],
     trainingURL = _config.SERVER_URL + 'training',
     newsURL = _config.SERVER_URL + 'news',
     loginURL = _config.SERVER_URL + 'auth/login',
-    localStorage = void 0;
+    jwtURL = _config.SERVER_URL + 'user/jwt';
+localStorage;
 
 var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
     _createClass(RestService, null, [{
         key: 'parameters',
         get: function get() {
-            return [[_http.Http]];
+            return [[_http.Http], [_angular2Jwt.AuthHttp]];
         }
     }]);
 
-    function RestService(http) {
+    function RestService(http, authHttp) {
         _classCallCheck(this, RestService);
 
         this.http = http;
-        //this.authHttp = authHttp;
+        this.authHttp = authHttp;
         this.localStorage = new _ionicAngular.Storage(_ionicAngular.LocalStorage);
-        this.localStorage.set('id_token', 'faketoken');
     }
 
     _createClass(RestService, [{
@@ -757,9 +778,19 @@ var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_c
             }).catch(this.handleError);
         }
     }, {
+        key: 'getJWT',
+        value: function getJWT() {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI0OXx1bmRlZmluZWQiLCJzdWIiOiJzdWJqZWN0IiwiYXVkIjoiYXBwIG5hbWUiLCJleHAiOjE0NjE1MTYwMDQ2MzYsIm5iZiI6MTQ2MDkxMTIwNDYzNywiaWF0IjoxNDYwOTExMjA0NjM3LCJqdGkiOiIwOTgzNjNlMC0wNGJiLTExZTYtOTUxMi1hOTllNWVmMzQ5NzYifQ.gpDmSmQ51PwWRQRGe83-1g-panB-rpb9sG4NPZ_HXqM";
+            this.localStorage.set('id_token', token);
+            /*
+            return this.http.get(jwtURL)
+                .map(res => res.json())
+                .catch(this.handleError);
+            */
+        }
+    }, {
         key: 'login',
         value: function login(credentials) {
-
             return this.http.post(loginURL, JSON.stringify(credentials), { headers: this.contentHeader }).map(function (res) {
                 return res.json();
             }).catch(this.handleError);
@@ -767,7 +798,14 @@ var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_c
     }, {
         key: 'findContacts',
         value: function findContacts() {
-            return this.http.get(contactsURL).map(function (res) {
+            var token = this.localStorage.get('id_token');
+            return this.http.get(contactsURL, {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'access_token': token._result
+                }
+            }).map(function (res) {
                 return res.json();
             }).catch(this.handleError);
         }

@@ -18,8 +18,9 @@
 
 
 module.exports.policies = {
+  '*': true,
 ContactController:{
-  	'*':'sessionAuth'
+  	'*':'hasJsonWebToken'
   }
   /***************************************************************************
   *                                                                          *

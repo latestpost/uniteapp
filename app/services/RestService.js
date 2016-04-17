@@ -14,6 +14,7 @@ let favorites = [],
     trainingURL = SERVER_URL + 'training',
     newsURL = SERVER_URL + 'news',
     loginURL = SERVER_URL + 'auth/login',
+    jwtURL = SERVER_URL + 'user/jwt'
     localStorage
 
 
@@ -21,14 +22,13 @@ let favorites = [],
 export class RestService {
 
     static get parameters() {
-        return [[Http]];
+        return [[Http],[AuthHttp]];
     }
 
-    constructor (http) {
+    constructor (http,authHttp) {
         this.http = http;
-        //this.authHttp = authHttp;
+        this.authHttp = authHttp;
         this.localStorage = new Storage(LocalStorage);
-        this.localStorage.set('id_token', 'faketoken');
     }
 
     findJobs() {
@@ -39,17 +39,33 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    login(credentials) {
+    getJWT() {
+      let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI0OXx1bmRlZmluZWQiLCJzdWIiOiJzdWJqZWN0IiwiYXVkIjoiYXBwIG5hbWUiLCJleHAiOjE0NjE1MTYwMDQ2MzYsIm5iZiI6MTQ2MDkxMTIwNDYzNywiaWF0IjoxNDYwOTExMjA0NjM3LCJqdGkiOiIwOTgzNjNlMC0wNGJiLTExZTYtOTUxMi1hOTllNWVmMzQ5NzYifQ.gpDmSmQ51PwWRQRGe83-1g-panB-rpb9sG4NPZ_HXqM";
+      this.localStorage.set('id_token', token);
+      /*
+      return this.http.get(jwtURL)
+          .map(res => res.json())
+          .catch(this.handleError);
+    */
+    }
 
+    login(credentials) {
       return this.http.post(loginURL, JSON.stringify(credentials), { headers: this.contentHeader })
         .map(res => res.json())
         .catch(this.handleError);
     }
 
     findContacts() {
-        return this.http.get(contactsURL)
-            .map(res => res.json())
-            .catch(this.handleError);
+      let token = this.localStorage.get('id_token');
+      return this.http.get(contactsURL, {
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'access_token': token._result
+          }
+      })
+      .map(res => res.json())
+      .catch(this.handleError);
     }
 
     handleError(error) {

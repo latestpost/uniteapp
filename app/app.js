@@ -10,12 +10,23 @@ import {NewsPage} from './pages/news/list';
 import {ContactsPage} from './pages/contacts/list';
 import {TrainingPage} from './pages/training/list';
 import {LoginPage} from './pages/login/login';
-
+import {provide} from 'angular2/core';
+import {AuthHttp, AuthConfig} from 'angular2-jwt';
+import {Http} from 'angular2/http'
 
 @App({
-  templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+    templateUrl: 'build/app.html',
+    providers: [
+        provide(AuthHttp, {
+            useFactory: (http) => {
+                return new AuthHttp(new AuthConfig(), http);
+            },
+            deps: [Http]
+        }),
+    ],
+    config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
+
 class MyApp {
   static get parameters() {
     return [[IonicApp], [Platform], [MenuController]];
