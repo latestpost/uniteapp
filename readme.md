@@ -53,4 +53,5 @@ Push notification of alerts
 
 
 RUN:
+/constructionapi/sails lift
 ionic serve
