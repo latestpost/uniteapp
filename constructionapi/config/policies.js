@@ -19,6 +19,10 @@
 
 module.exports.policies = {
 
+'*': ['authorised'],
+JobController: { '*': true },
+UserController: { '*': true }
+
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *

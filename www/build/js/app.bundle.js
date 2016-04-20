@@ -506,6 +506,7 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
 
     this.app = app;
     this.restService = restService;
+    this.localStorage = new _ionicAngular.Storage(_ionicAngular.LocalStorage);
     this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
       username: ["", _common.Validators.required], // Setting fields as required
       password: ["", _common.Validators.required]
@@ -522,11 +523,10 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
       credentials.email = this.loginForm.value.username;
       credentials.password = this.loginForm.value.password;
       this.restService.login(credentials).subscribe(function (json) {
-        console.log(json);
+        var token = json.token;
+        _this.localStorage.set('id_token', token);
         _this.app.main.setLoggedin();
       });
-
-      this.restService.getJWT();
     }
   }]);
 
@@ -748,9 +748,8 @@ var favorites = [],
     agreementsURL = _config.SERVER_URL + 'agreement',
     trainingURL = _config.SERVER_URL + 'training',
     newsURL = _config.SERVER_URL + 'news',
-    loginURL = _config.SERVER_URL + 'auth/login',
-    jwtURL = _config.SERVER_URL + 'user/jwt';
-localStorage;
+    loginURL = _config.SERVER_URL + 'user/login',
+    localStorage = void 0;
 
 var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
     _createClass(RestService, null, [{
@@ -776,17 +775,6 @@ var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_c
             return this.http.get(jobsURL).map(function (res) {
                 return res.json();
             }).catch(this.handleError);
-        }
-    }, {
-        key: 'getJWT',
-        value: function getJWT() {
-            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI0OXx1bmRlZmluZWQiLCJzdWIiOiJzdWJqZWN0IiwiYXVkIjoiYXBwIG5hbWUiLCJleHAiOjE0NjE1MTYwMDQ2MzYsIm5iZiI6MTQ2MDkxMTIwNDYzNywiaWF0IjoxNDYwOTExMjA0NjM3LCJqdGkiOiIwOTgzNjNlMC0wNGJiLTExZTYtOTUxMi1hOTllNWVmMzQ5NzYifQ.gpDmSmQ51PwWRQRGe83-1g-panB-rpb9sG4NPZ_HXqM";
-            this.localStorage.set('id_token', token);
-            /*
-            return this.http.get(jwtURL)
-                .map(res => res.json())
-                .catch(this.handleError);
-            */
         }
     }, {
         key: 'login',

@@ -1,6 +1,7 @@
 import {Page,IonicApp} from 'ionic-angular';
 import {RestService} from '../../services/RestService';
 import {FormBuilder, Validators} from 'angular2/common';
+import {Storage, LocalStorage} from 'ionic-angular';
 
 @Page({
   templateUrl: 'build/pages/login/login.html',
@@ -12,6 +13,7 @@ export class LoginPage {
   constructor(app, restService, formBuilder, validators) {
     this.app = app;
     this.restService = restService;
+    this.localStorage = new Storage(LocalStorage);
     this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
       username: ["", Validators.required], // Setting fields as required
       password: ["", Validators.required]
@@ -25,10 +27,9 @@ export class LoginPage {
     credentials.password = this.loginForm.value.password;
     this.restService.login(credentials)
       .subscribe((json) => {
-        console.log(json);
-        this.app.main.setLoggedin();
+          let token = json.token;
+          this.localStorage.set('id_token', token);
+          this.app.main.setLoggedin();
       });
-
-    this.restService.getJWT();
   }
 }

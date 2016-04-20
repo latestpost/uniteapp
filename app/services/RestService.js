@@ -13,8 +13,7 @@ let favorites = [],
     agreementsURL = SERVER_URL + 'agreement',
     trainingURL = SERVER_URL + 'training',
     newsURL = SERVER_URL + 'news',
-    loginURL = SERVER_URL + 'auth/login',
-    jwtURL = SERVER_URL + 'user/jwt'
+    loginURL = SERVER_URL + 'user/login',
     localStorage
 
 
@@ -37,16 +36,6 @@ export class RestService {
         return this.http.get(jobsURL)
             .map(res => res.json())
             .catch(this.handleError);
-    }
-
-    getJWT() {
-      let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI0OXx1bmRlZmluZWQiLCJzdWIiOiJzdWJqZWN0IiwiYXVkIjoiYXBwIG5hbWUiLCJleHAiOjE0NjE1MTYwMDQ2MzYsIm5iZiI6MTQ2MDkxMTIwNDYzNywiaWF0IjoxNDYwOTExMjA0NjM3LCJqdGkiOiIwOTgzNjNlMC0wNGJiLTExZTYtOTUxMi1hOTllNWVmMzQ5NzYifQ.gpDmSmQ51PwWRQRGe83-1g-panB-rpb9sG4NPZ_HXqM";
-      this.localStorage.set('id_token', token);
-      /*
-      return this.http.get(jwtURL)
-          .map(res => res.json())
-          .catch(this.handleError);
-    */
     }
 
     login(credentials) {
