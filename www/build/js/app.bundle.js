@@ -474,7 +474,7 @@ var JobsPage = exports.JobsPage = (_dec = (0, _ionicAngular.Page)({
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.LoginPage = undefined;
 
@@ -491,47 +491,47 @@ var _common = require('angular2/common');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
-  templateUrl: 'build/pages/login/login.html',
-  providers: [_RestService.RestService]
+    templateUrl: 'build/pages/login/login.html',
+    providers: [_RestService.RestService]
 }), _dec(_class = function () {
-  _createClass(LoginPage, null, [{
-    key: 'parameters',
-    get: function get() {
-      return [[_ionicAngular.IonicApp], [_RestService.RestService], [_common.FormBuilder]];
+    _createClass(LoginPage, null, [{
+        key: 'parameters',
+        get: function get() {
+            return [[_ionicAngular.IonicApp], [_RestService.RestService], [_common.FormBuilder]];
+        }
+    }]);
+
+    function LoginPage(app, restService, formBuilder, validators) {
+        _classCallCheck(this, LoginPage);
+
+        this.app = app;
+        this.restService = restService;
+        this.localStorage = new _ionicAngular.Storage(_ionicAngular.LocalStorage);
+        this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
+            email: ["", _common.Validators.required], // Setting fields as required
+            password: ["", _common.Validators.required]
+        });
     }
-  }]);
 
-  function LoginPage(app, restService, formBuilder, validators) {
-    _classCallCheck(this, LoginPage);
+    _createClass(LoginPage, [{
+        key: 'login',
+        value: function login() {
+            var _this = this;
 
-    this.app = app;
-    this.restService = restService;
-    this.localStorage = new _ionicAngular.Storage(_ionicAngular.LocalStorage);
-    this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
-      email: ["", _common.Validators.required], // Setting fields as required
-      password: ["", _common.Validators.required]
-    });
-  }
+            var credentials = {};
+            credentials.email = this.loginForm.value.email;
+            credentials.password = this.loginForm.value.password;
+            this.restService.login(credentials).subscribe(function (json) {
+                // store jwt token
+                var token = json.token;
+                _this.localStorage.set('id_token', token);
+                // set logged in status
+                _this.app.main.setLoggedin();
+            });
+        }
+    }]);
 
-  _createClass(LoginPage, [{
-    key: 'login',
-    value: function login() {
-      var _this = this;
-
-      console.log(this.loginForm.value);
-      var credentials = {};
-      credentials.email = this.loginForm.value.email;
-      credentials.password = this.loginForm.value.password;
-      this.restService.login(credentials).subscribe(function (json) {
-        var token = json.token;
-        _this.localStorage.set('id_token', token);
-        console.log('logged in got token ' + token);
-        _this.app.main.setLoggedin();
-      });
-    }
-  }]);
-
-  return LoginPage;
+    return LoginPage;
 }()) || _class);
 
 },{"../../services/RestService":14,"angular2/common":144,"ionic-angular":463}],11:[function(require,module,exports){
@@ -742,8 +742,7 @@ require('rxjs/Rx');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var favorites = [],
-    jobsURL = _config.SERVER_URL + 'job',
+var jobsURL = _config.SERVER_URL + 'job',
     contactsURL = _config.SERVER_URL + 'contact',
     ratesURL = _config.SERVER_URL + 'rate',
     agreementsURL = _config.SERVER_URL + 'agreement',
@@ -771,8 +770,7 @@ var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_c
     _createClass(RestService, [{
         key: 'findJobs',
         value: function findJobs() {
-            console.log((0, _angular2Jwt.tokenNotExpired)());
-
+            // public access
             return this.http.get(jobsURL).map(function (res) {
                 return res.json();
             }).catch(this.handleError);
@@ -787,12 +785,13 @@ var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_c
     }, {
         key: 'findContacts',
         value: function findContacts() {
+            // needs token to get access
             var token = this.localStorage.get('id_token');
             return this.http.get(contactsURL, {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'access_token': token._result
+                    'Authorization': 'Bearer ' + token._result
                 }
             }).map(function (res) {
                 return res.json();

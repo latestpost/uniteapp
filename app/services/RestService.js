@@ -6,8 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {AuthHttp, tokenNotExpired} from 'angular2-jwt';
 import 'rxjs/Rx';
 
-let favorites = [],
-    jobsURL = SERVER_URL + 'job',
+let jobsURL = SERVER_URL + 'job',
     contactsURL = SERVER_URL + 'contact',
     ratesURL = SERVER_URL + 'rate',
     agreementsURL = SERVER_URL + 'agreement',
@@ -31,9 +30,8 @@ export class RestService {
     }
 
     findJobs() {
-      console.log (tokenNotExpired());
-
-        return this.http.get(jobsURL)
+      // public access
+      return this.http.get(jobsURL)
             .map(res => res.json())
             .catch(this.handleError);
     }
@@ -45,12 +43,13 @@ export class RestService {
     }
 
     findContacts() {
+      // needs token to get access
       let token = this.localStorage.get('id_token');
       return this.http.get(contactsURL, {
           headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
-              'access_token': token._result
+              'Authorization': 'Bearer ' + token._result
           }
       })
       .map(res => res.json())

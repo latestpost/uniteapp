@@ -11,26 +11,26 @@ export class LoginPage {
   static get parameters(){ return [[IonicApp],[RestService], [FormBuilder]]; }
 
   constructor(app, restService, formBuilder, validators) {
-    this.app = app;
-    this.restService = restService;
-    this.localStorage = new Storage(LocalStorage);
-    this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
-      email: ["", Validators.required], // Setting fields as required
-      password: ["", Validators.required]
-  });
+        this.app = app;
+        this.restService = restService;
+        this.localStorage = new Storage(LocalStorage);
+        this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
+            email: ["", Validators.required], // Setting fields as required
+            password: ["", Validators.required]
+        });
   }
 
-  login(){
-    console.log(this.loginForm.value)
-    let credentials = {};
-    credentials.email = this.loginForm.value.email;
-    credentials.password = this.loginForm.value.password;
-    this.restService.login(credentials)
-      .subscribe((json) => {
-          let token = json.token;
-          this.localStorage.set('id_token', token);
-          console.log ('logged in got token ' + token);
-          this.app.main.setLoggedin();
-      });
+  login() {
+      let credentials = {};
+      credentials.email = this.loginForm.value.email;
+      credentials.password = this.loginForm.value.password;
+      this.restService.login(credentials)
+          .subscribe((json) => {
+              // store jwt token
+              let token = json.token;
+              this.localStorage.set('id_token', token);
+              // set logged in status
+              this.app.main.setLoggedin();
+          });
   }
 }
