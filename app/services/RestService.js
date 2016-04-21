@@ -13,7 +13,7 @@ let favorites = [],
     agreementsURL = SERVER_URL + 'agreement',
     trainingURL = SERVER_URL + 'training',
     newsURL = SERVER_URL + 'news',
-    loginURL = SERVER_URL + 'user/login',
+    loginURL = SERVER_URL + 'auth',
     localStorage
 
 

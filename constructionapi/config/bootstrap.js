@@ -14,7 +14,7 @@ module.exports.bootstrap = function(cb) {
   // seed the database with Locations
         var users = {
             email: 'test@test.com',
-            password: 'testpassword'
+            encryptedPassword: 'testpassword'
         };
         User.create(users, function Obj(err, locations) {
             if (err) {

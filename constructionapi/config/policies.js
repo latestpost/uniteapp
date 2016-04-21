@@ -19,10 +19,18 @@
 
 module.exports.policies = {
 
-'*': ['authorised'],
-JobController: { '*': true },
-UserController: { '*': true }
+'*': ['authorised'], // Everything resctricted here
+'UserController': {
+  'create': true // We dont need authorization here, allowing public access
+},
 
+'AuthController': {
+  '*': true // We dont need authorization here, allowing public access
+},
+
+'JobController': {
+  '*': true // We dont need authorization here, allowing public access
+}
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *

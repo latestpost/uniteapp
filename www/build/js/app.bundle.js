@@ -508,7 +508,7 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
     this.restService = restService;
     this.localStorage = new _ionicAngular.Storage(_ionicAngular.LocalStorage);
     this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
-      username: ["", _common.Validators.required], // Setting fields as required
+      email: ["", _common.Validators.required], // Setting fields as required
       password: ["", _common.Validators.required]
     });
   }
@@ -520,11 +520,12 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
 
       console.log(this.loginForm.value);
       var credentials = {};
-      credentials.email = this.loginForm.value.username;
+      credentials.email = this.loginForm.value.email;
       credentials.password = this.loginForm.value.password;
       this.restService.login(credentials).subscribe(function (json) {
         var token = json.token;
         _this.localStorage.set('id_token', token);
+        console.log('logged in got token ' + token);
         _this.app.main.setLoggedin();
       });
     }
@@ -748,7 +749,7 @@ var favorites = [],
     agreementsURL = _config.SERVER_URL + 'agreement',
     trainingURL = _config.SERVER_URL + 'training',
     newsURL = _config.SERVER_URL + 'news',
-    loginURL = _config.SERVER_URL + 'user/login',
+    loginURL = _config.SERVER_URL + 'auth',
     localStorage = void 0;
 
 var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {

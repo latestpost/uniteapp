@@ -15,7 +15,7 @@ export class LoginPage {
     this.restService = restService;
     this.localStorage = new Storage(LocalStorage);
     this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
-      username: ["", Validators.required], // Setting fields as required
+      email: ["", Validators.required], // Setting fields as required
       password: ["", Validators.required]
   });
   }
@@ -23,12 +23,13 @@ export class LoginPage {
   login(){
     console.log(this.loginForm.value)
     let credentials = {};
-    credentials.email = this.loginForm.value.username;
+    credentials.email = this.loginForm.value.email;
     credentials.password = this.loginForm.value.password;
     this.restService.login(credentials)
       .subscribe((json) => {
           let token = json.token;
           this.localStorage.set('id_token', token);
+          console.log ('logged in got token ' + token);
           this.app.main.setLoggedin();
       });
   }
