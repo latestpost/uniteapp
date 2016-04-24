@@ -52,7 +52,9 @@ Available as IOS and Android application in Itunes and Google Store
 Push notification of alerts
 
 RUN:
+```
 	npm install
 	/constructionapi/npm install
 	/constructionapi/sails lift
 	ionic serve
+```
