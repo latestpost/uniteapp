@@ -30,6 +30,18 @@ module.exports.policies = {
 
 'JobController': {
   '*': true // We dont need authorization here, allowing public access
+},
+
+'ProjectController': {
+  '*': true // We dont need authorization here, allowing public access
+},
+
+'SkillController': {
+  '*': true // We dont need authorization here, allowing public access
+},
+
+'ProjectSkillController': {
+  '*': true // We dont need authorization here, allowing public access
 }
   /***************************************************************************
   *                                                                          *

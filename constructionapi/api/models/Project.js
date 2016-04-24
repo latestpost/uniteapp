@@ -9,14 +9,15 @@ module.exports = {
 
   attributes: {
 
-    name: {
+    title: {
       type: 'string'
     },
-    example: {
+    description: {
       type: 'string'
     },
-    owner: {
-      model: 'project'
+    skillsetsneeded: {
+      collection: 'ProjectSkill',
+      via: 'owner'
     }
   }
 };
