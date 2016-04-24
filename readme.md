@@ -51,7 +51,8 @@ In addition to access to the above the App needs to have the following:
 Available as IOS and Android application in Itunes and Google Store
 Push notification of alerts
 
-
 RUN:
-/constructionapi/sails lift
-ionic serve
+	npm install
+	/constructionapi/npm install
+	/constructionapi/sails lift
+	ionic serve
