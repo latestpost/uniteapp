@@ -10,6 +10,7 @@ import {NewsPage} from './pages/news/list';
 import {ContactsPage} from './pages/contacts/list';
 import {TrainingPage} from './pages/training/list';
 import {LoginPage} from './pages/login/login';
+import {ProjectPage} from './pages/project/project';
 import {provide} from 'angular2/core';
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
 import {Http} from 'angular2/http'
@@ -45,10 +46,10 @@ class MyApp {
     this.app.pages = [
       { icon: 'login', title: 'Login', component: LoginPage },
     ];
-    this.rootPage = LoginPage;
+    this.rootPage = ProjectPage;
     if (this.loggedIn){
       this.rootPage = HomePage;
-      this.setNavLoggedin();
+      this.setLoggedin();
     }
   }
 
@@ -78,6 +79,7 @@ class MyApp {
       { icon: 'calendar', title: 'Training', component: TrainingPage },
       { icon: 'people', title: 'Search Jobs', component: JobsPage },
       { icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage },
+      { icon: 'project', title: 'Project', component: ProjectPage },
       { icon: 'login', title: 'Login', component: LoginPage },
     ];
     this.loggedIn = true;

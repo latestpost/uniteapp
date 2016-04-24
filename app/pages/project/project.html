@@ -1,0 +1,24 @@
+<ion-navbar *navbar>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Unite4Jobs - Construction App</ion-title>
+</ion-navbar>
+
+
+<ion-content padding class="getting-started">
+
+    <h3>Unite4Jobs - Construction - Add New Project</h3>
+
+    <form [ngFormModel]="projectForm" (submit)="addProject($event)">
+            <input type="text" placeholder="project title" ngControl="title">
+            <br/>
+            <input type="text" placeholder="date start" ngControl="startDate">
+            <br/>
+            <textarea placeholder="description" ngControl="description"></textarea>
+        <div padding>
+            <button block type="submit">Add Project</button>
+        </div>
+    </form>
+
+</ion-content>
