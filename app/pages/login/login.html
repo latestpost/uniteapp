@@ -5,17 +5,21 @@
     <ion-title>Unite4Jobs - Construction App</ion-title>
 </ion-navbar>
 
+<style>
+.loginInput {padding:8px; min-width:400px;margin:4px 0px 0px 0px;}
+.loginBtn {margin:16px 0px 0px 0px; width:200px;}
+</style>
 
-<ion-content padding class="getting-started">
+<ion-content padding>
 
     <h3>Unite4Jobs - Construction - Login</h3>
 
     <form [ngFormModel]="loginForm" (submit)="login($event)">
-            <input type="text" placeholder="email" ngControl="email">
+            <input class="loginInput"  type="text" placeholder="email" ngControl="email">
             <br/>
-            <input type="password" placeholder="password" ngControl="password">
+            <input class="loginInput"  type="password" placeholder="password" ngControl="password">
 
-        <div padding>
+        <div class="loginBtn">
             <button block type="submit">Login</button>
         </div>
     </form>

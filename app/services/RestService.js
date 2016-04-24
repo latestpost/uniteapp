@@ -6,7 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {AuthHttp, tokenNotExpired} from 'angular2-jwt';
 import 'rxjs/Rx';
 
-let jobsURL = SERVER_URL + 'job',
+let jobsURL = SERVER_URL + 'project',
     contactsURL = SERVER_URL + 'contact',
     ratesURL = SERVER_URL + 'rate',
     agreementsURL = SERVER_URL + 'agreement',

@@ -69,7 +69,7 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
 
     // set our app's pages
     this.app.pages = [{ icon: 'login', title: 'Login', component: _login.LoginPage }];
-    this.rootPage = _project.ProjectPage;
+    this.rootPage = _login.LoginPage;
     if (this.loggedIn) {
       this.rootPage = _homepage.HomePage;
       this.setLoggedin();
@@ -99,7 +99,7 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
     value: function setLoggedin() {
       var _this = this;
 
-      this.pages = [{ icon: 'home', title: 'Home', component: _homepage.HomePage }, { icon: 'contact', title: 'Reps Contact List', component: _list6.ContactsPage }, { icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { icon: 'wifi', title: 'Wage Rates', component: _list4.RatesPage }, { icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { icon: 'people', title: 'Search Jobs', component: _list2.JobsPage }, { icon: 'wifi', title: 'Job Notifications', component: _list3.JobNotificationsPage }, { icon: 'project', title: 'Project', component: _project.ProjectPage }, { icon: 'login', title: 'Login', component: _login.LoginPage }];
+      this.pages = [{ icon: 'home', title: 'Home', component: _homepage.HomePage }, { icon: 'contact', title: 'Reps Contact List', component: _list6.ContactsPage }, { icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { icon: 'wifi', title: 'Wage Rates', component: _list4.RatesPage }, { icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { icon: 'people', title: 'Search Jobs', component: _list2.JobsPage }, { icon: 'wifi', title: 'Job Notifications', component: _list3.JobNotificationsPage }, { icon: 'project', title: 'Add Project', component: _project.ProjectPage }, { icon: 'login', title: 'Login', component: _login.LoginPage }];
       this.loggedIn = true;
       setTimeout(function () {
         _this.rootPage = _homepage.HomePage;
@@ -802,7 +802,7 @@ require('rxjs/Rx');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var jobsURL = _config.SERVER_URL + 'job',
+var jobsURL = _config.SERVER_URL + 'project',
     contactsURL = _config.SERVER_URL + 'contact',
     ratesURL = _config.SERVER_URL + 'rate',
     agreementsURL = _config.SERVER_URL + 'agreement',

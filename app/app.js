@@ -46,7 +46,7 @@ class MyApp {
     this.app.pages = [
       { icon: 'login', title: 'Login', component: LoginPage },
     ];
-    this.rootPage = ProjectPage;
+    this.rootPage = LoginPage;
     if (this.loggedIn){
       this.rootPage = HomePage;
       this.setLoggedin();
@@ -79,7 +79,7 @@ class MyApp {
       { icon: 'calendar', title: 'Training', component: TrainingPage },
       { icon: 'people', title: 'Search Jobs', component: JobsPage },
       { icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage },
-      { icon: 'project', title: 'Project', component: ProjectPage },
+      { icon: 'project', title: 'Add Project', component: ProjectPage },
       { icon: 'login', title: 'Login', component: LoginPage },
     ];
     this.loggedIn = true;

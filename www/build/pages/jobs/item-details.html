@@ -5,12 +5,15 @@
     <ion-title>Job Details</ion-title>
 </ion-navbar>
 
-<ion-content>
+<ion-content padding>
     <div *ngIf="selectedItem" class="job">
         <b>{{selectedItem.title}}</b>
         <ion-icon name="{{selectedItem.icon}}"></ion-icon>
         <div>
             {{selectedItem.description}}
+        </div>
+        <div ion-item *ngFor="#skill of selectedItem.skillsetsneeded">
+          {{skill.name}}
         </div>
     </div>
 </ion-content>
