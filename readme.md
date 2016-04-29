@@ -54,8 +54,11 @@ Push notification of alerts
 RUN:
 ```
 	npm install
-	/constructionapi/npm install
-	/constructionapi/sails lift
+	cd constructionapi
+	npm install
+	rm -rf .tmp
+	sails lift
+	cd ..
 	ionic serve
 ```
 

@@ -25,6 +25,7 @@ export class LoginPage {
       credentials.email = this.loginForm.value.email;
       credentials.password = this.loginForm.value.password;
 
+      //**TODO auto login from storage
       credentials.email = 'test@test.com';
       credentials.password = 'test';
       this.restService.login(credentials)
