@@ -1,33 +1,30 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {ItemDetailsPage} from '../item-details/item-details';
+import {RestService} from '../../services/RestService';
 
 
 @Page({
-  templateUrl: 'build/pages/agreements/list.html'
+  templateUrl: 'build/pages/agreements/list.html',
+  providers: [RestService]
 })
 export class AgreementsPage {
   static get parameters() {
-    return [[NavController], [NavParams]];
+    return [[NavController], [NavParams], [RestService]];
   }
 
-  constructor(nav, navParams) {
+  constructor(nav, navParams, restService) {
+    this.restService = restService;
     this.nav = nav;
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for(let i = 1; i < 5; i++) {
-      this.items.push({
-        title: 'Agreement ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
   }
+
+  ngOnInit() {
+        this.restService.findAgreements().subscribe(
+            data => this.agreements = data
+        );
+    }
 
   itemTapped(event, item) {
      this.nav.push(ItemDetailsPage, {

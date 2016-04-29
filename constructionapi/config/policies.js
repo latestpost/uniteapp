@@ -46,6 +46,10 @@ module.exports.policies = {
 
 'RateController': {
   '*': true // We dont need authorization here, allowing public access
+},
+
+'AgreementController': {
+  '*': true // We dont need authorization here, allowing public access
 }
   /***************************************************************************
   *                                                                          *

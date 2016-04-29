@@ -126,39 +126,41 @@ var _ionicAngular = require('ionic-angular');
 
 var _itemDetails = require('../item-details/item-details');
 
+var _RestService = require('../../services/RestService');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var AgreementsPage = exports.AgreementsPage = (_dec = (0, _ionicAngular.Page)({
-  templateUrl: 'build/pages/agreements/list.html'
+  templateUrl: 'build/pages/agreements/list.html',
+  providers: [_RestService.RestService]
 }), _dec(_class = function () {
   _createClass(AgreementsPage, null, [{
     key: 'parameters',
     get: function get() {
-      return [[_ionicAngular.NavController], [_ionicAngular.NavParams]];
+      return [[_ionicAngular.NavController], [_ionicAngular.NavParams], [_RestService.RestService]];
     }
   }]);
 
-  function AgreementsPage(nav, navParams) {
+  function AgreementsPage(nav, navParams, restService) {
     _classCallCheck(this, AgreementsPage);
 
+    this.restService = restService;
     this.nav = nav;
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane', 'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (var i = 1; i < 5; i++) {
-      this.items.push({
-        title: 'Agreement ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
   }
 
   _createClass(AgreementsPage, [{
+    key: 'ngOnInit',
+    value: function ngOnInit() {
+      var _this = this;
+
+      this.restService.findAgreements().subscribe(function (data) {
+        return _this.agreements = data;
+      });
+    }
+  }, {
     key: 'itemTapped',
     value: function itemTapped(event, item) {
       this.nav.push(_itemDetails.ItemDetailsPage, {
@@ -170,7 +172,7 @@ var AgreementsPage = exports.AgreementsPage = (_dec = (0, _ionicAngular.Page)({
   return AgreementsPage;
 }()) || _class);
 
-},{"../item-details/item-details":6,"ionic-angular":465}],3:[function(require,module,exports){
+},{"../../services/RestService":16,"../item-details/item-details":6,"ionic-angular":465}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -246,17 +248,6 @@ var ContactsPage = exports.ContactsPage = (_dec = (0, _ionicAngular.Page)({
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane', 'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (var i = 1; i < 5; i++) {
-      this.items.push({
-        title: 'Job ' + i,
-        description: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
   }
 
   _createClass(ContactsPage, [{
@@ -894,6 +885,14 @@ var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_c
         value: function findRates() {
             // public access
             return this.http.get(ratesURL).map(function (res) {
+                return res.json();
+            }).catch(this.handleError);
+        }
+    }, {
+        key: 'findAgreements',
+        value: function findAgreements() {
+            // public access
+            return this.http.get(agreementsURL).map(function (res) {
                 return res.json();
             }).catch(this.handleError);
         }

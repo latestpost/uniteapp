@@ -63,6 +63,13 @@ export class RestService {
             .catch(this.handleError);
     }
 
+    findAgreements() {
+      // public access
+      return this.http.get(agreementsURL)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
     handleError(error) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');

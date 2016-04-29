@@ -2,16 +2,16 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Construction Agreements</ion-title>
+  <ion-title>Agreements</ion-title>
 </ion-navbar>
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
+    <button ion-item *ngFor="#agreement of agreements" (click)="itemTapped($event, agreement)">
+      <ion-icon name="{{agreement.icon}}" item-left></ion-icon>
+      {{agreement.name}}
+      <div style="min-width:200px;" class="item-note" item-right>
+        <div>{{agreement.notes}}</div>
       </div>
     </button>
   </ion-list>

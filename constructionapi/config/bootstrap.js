@@ -197,6 +197,19 @@ module.exports.bootstrap = function(cb) {
                         console.log('rate created: ', rate);
                     });
 
+                    var agreement = {
+                        name: 'Agreement 1',
+                        url: 'http://www.unitetheunion.org/uploaded/documents/BATJIC%20wage%20rates%20and%20allowances%20information%20sheet%202016-1711-26412.pdf',
+                        notes: 'Some notes'
+                    };
+
+                    Agreement.create(agreement, function Obj(err, o) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log('agreement created: ', agreement);
+                    });
+
 
 
 
