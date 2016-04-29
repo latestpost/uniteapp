@@ -2,7 +2,7 @@ import {Page, NavController, NavParams} from 'ionic-angular';
 
 
 @Page({
-  templateUrl: 'build/pages/jobs/item-details.html'
+  templateUrl: 'build/pages/rates/item-details.html'
 })
 export class ItemDetailsPage {
   static get parameters() {

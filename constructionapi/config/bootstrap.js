@@ -155,7 +155,9 @@ module.exports.bootstrap = function(cb) {
                     var rate = {
                         name: 'Basic Pay',
                         grade: 'Grade 1 Adult',
-                        amount: 10.57
+                        amount: 10.57,
+                        url: 'http://www.unitetheunion.org/uploaded/documents/BATJIC%20wage%20rates%20and%20allowances%20information%20sheet%202016-1711-26412.pdf',
+                        notes: '2016 CATEGORISED WORK RATES OF PAY (1 – 3) From Monday 4th January 2016'
                     };
 
                     Rate.create(rate, function Obj(err, o) {
@@ -168,7 +170,9 @@ module.exports.bootstrap = function(cb) {
                     rate = {
                         name: 'Basic Pay',
                         grade: 'Grade 1 16 / 17 y',
-                        amount: 8.17
+                        amount: 8.17,
+                        url: 'http://www.unitetheunion.org/uploaded/documents/BATJIC%20wage%20rates%20and%20allowances%20information%20sheet%202016-1711-26412.pdf',
+                        notes: '2016 CATEGORISED WORK RATES OF PAY (1 – 3) From Monday 4th January 2016'
                     };
 
                     Rate.create(rate, function Obj(err, o) {
@@ -181,7 +185,9 @@ module.exports.bootstrap = function(cb) {
                     rate = {
                         name: 'Night',
                         grade: 'Grade 1 Adult',
-                        amount: 13.37
+                        amount: 13.37,
+                        url: 'http://www.unitetheunion.org/uploaded/documents/BATJIC%20wage%20rates%20and%20allowances%20information%20sheet%202016-1711-26412.pdf',
+                        notes: '2016 CATEGORISED WORK RATES OF PAY (1 – 3) From Monday 4th January 2016'
                     };
 
                     Rate.create(rate, function Obj(err, o) {

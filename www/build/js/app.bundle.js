@@ -647,8 +647,43 @@ var ProjectPage = exports.ProjectPage = (_dec = (0, _ionicAngular.Page)({
 }()) || _class);
 
 },{"../../services/RestService":16,"angular2/common":146,"ionic-angular":465}],13:[function(require,module,exports){
-arguments[4][3][0].apply(exports,arguments)
-},{"dup":3,"ionic-angular":465}],14:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ItemDetailsPage = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _class;
+
+var _ionicAngular = require('ionic-angular');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ItemDetailsPage = exports.ItemDetailsPage = (_dec = (0, _ionicAngular.Page)({
+  templateUrl: 'build/pages/rates/item-details.html'
+}), _dec(_class = function () {
+  _createClass(ItemDetailsPage, null, [{
+    key: 'parameters',
+    get: function get() {
+      return [[_ionicAngular.NavController], [_ionicAngular.NavParams]];
+    }
+  }]);
+
+  function ItemDetailsPage(nav, navParams) {
+    _classCallCheck(this, ItemDetailsPage);
+
+    this.nav = nav;
+    // If we navigated to this page, we will have an item available as a nav param
+    this.selectedItem = navParams.get('item');
+  }
+
+  return ItemDetailsPage;
+}()) || _class);
+
+},{"ionic-angular":465}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

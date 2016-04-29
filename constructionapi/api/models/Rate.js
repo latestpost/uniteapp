@@ -17,6 +17,9 @@ module.exports = {
     },
     amount: {
       type: 'string'
+    },
+    notes: {
+      type: 'string'
     }
   }
 };
