@@ -58,3 +58,9 @@ RUN:
 	/constructionapi/sails lift
 	ionic serve
 ```
+
+Dryden's TODO:
+```
+	add phonegap/cordova notification plugins
+	add search input filter for each page
+```
