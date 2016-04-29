@@ -29,17 +29,17 @@ export class RestService {
         this.localStorage = new Storage(LocalStorage);
     }
 
+    login(credentials) {
+      return this.http.post(loginURL, JSON.stringify(credentials), { headers: this.contentHeader })
+        .map(res => res.json())
+        .catch(this.handleError);
+    }
+
     findJobs() {
       // public access
       return this.http.get(jobsURL)
             .map(res => res.json())
             .catch(this.handleError);
-    }
-
-    login(credentials) {
-      return this.http.post(loginURL, JSON.stringify(credentials), { headers: this.contentHeader })
-        .map(res => res.json())
-        .catch(this.handleError);
     }
 
     findContacts() {
@@ -54,6 +54,13 @@ export class RestService {
       })
       .map(res => res.json())
       .catch(this.handleError);
+    }
+
+    findRates() {
+      // public access
+      return this.http.get(ratesURL)
+            .map(res => res.json())
+            .catch(this.handleError);
     }
 
     handleError(error) {

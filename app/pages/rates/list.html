@@ -7,11 +7,12 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="#item of items" (click)="itemTapped($event, item)">
-      <ion-icon name="{{item.icon}}" item-left></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-right>
-        {{item.note}}
+    <button ion-item *ngFor="#rate of rates" (click)="itemTapped($event, item)">
+      <ion-icon name="{{rate.icon}}" item-left></ion-icon>
+      {{rate.name}}
+      <div style="min-width:200px;" class="item-note" item-right>
+        <div style="width:70%;float:left;">{{rate.grade}}</div>
+        <div style="width:30%;float:left;">£{{rate.amount}}</div>
       </div>
     </button>
   </ion-list>

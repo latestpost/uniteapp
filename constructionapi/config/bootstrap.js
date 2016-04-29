@@ -152,6 +152,48 @@ module.exports.bootstrap = function(cb) {
                         console.log('skillset required created: ', skillset3);
                     });
 
+                    var rate = {
+                        name: 'Basic Pay',
+                        grade: 'Grade 1 Adult',
+                        amount: 10.57
+                    };
+
+                    Rate.create(rate, function Obj(err, o) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log('rate created: ', rate);
+                    });
+
+                    rate = {
+                        name: 'Basic Pay',
+                        grade: 'Grade 1 16 / 17 y',
+                        amount: 8.17
+                    };
+
+                    Rate.create(rate, function Obj(err, o) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log('rate created: ', rate);
+                    });
+
+                    rate = {
+                        name: 'Night',
+                        grade: 'Grade 1 Adult',
+                        amount: 13.37
+                    };
+
+                    Rate.create(rate, function Obj(err, o) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log('rate created: ', rate);
+                    });
+
+
+
+
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();

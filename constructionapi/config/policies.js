@@ -42,6 +42,10 @@ module.exports.policies = {
 
 'ProjectSkillController': {
   '*': true // We dont need authorization here, allowing public access
+},
+
+'RateController': {
+  '*': true // We dont need authorization here, allowing public access
 }
   /***************************************************************************
   *                                                                          *

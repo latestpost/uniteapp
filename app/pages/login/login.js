@@ -24,6 +24,9 @@ export class LoginPage {
       let credentials = {};
       credentials.email = this.loginForm.value.email;
       credentials.password = this.loginForm.value.password;
+
+      credentials.email = 'test@test.com';
+      credentials.password = 'test';
       this.restService.login(credentials)
           .subscribe((json) => {
               // store jwt token
