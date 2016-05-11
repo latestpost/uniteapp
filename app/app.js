@@ -1,19 +1,45 @@
 import 'es6-shim';
-import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
-import {StatusBar} from 'ionic-native';
-import {HomePage} from './pages/homepage/homepage';
-import {AgreementsPage} from './pages/agreements/list';
-import {JobsPage} from './pages/jobs/list';
-import {JobNotificationsPage} from './pages/jobnotifications/list';
-import {RatesPage} from './pages/rates/list';
-import {NewsPage} from './pages/news/list';
-import {ContactsPage} from './pages/contacts/list';
-import {TrainingPage} from './pages/training/list';
-import {LoginPage} from './pages/login/login';
-import {ProjectPage} from './pages/project/project';
-import {provide} from 'angular2/core';
+
 import {AuthHttp, AuthConfig} from 'angular2-jwt';
 import {Http} from 'angular2/http'
+import {provide} from 'angular2/core';
+
+import {App, IonicApp, Platform, MenuController, Alert} from 'ionic-angular';
+import {StatusBar} from 'ionic-native';
+
+import {AgreementsPage} from './pages/agreements/list';
+import {ContactsPage} from './pages/contacts/list';
+import {HomePage} from './pages/homepage/homepage';
+import {JobNotificationsPage} from './pages/jobnotifications/list';
+import {JobsPage} from './pages/jobs/list';
+import {LoginPage} from './pages/login/login';
+import {NewsPage} from './pages/news/list';
+import {ProjectPage} from './pages/project/project';
+import {RatesPage} from './pages/rates/list';
+import {TrainingPage} from './pages/training/list';
+
+
+let UNAUTHORIZED_PAGES = [
+    { path: '/login', icon: 'login', title: 'Login', component: LoginPage }
+];
+
+let AUTHORIZED_PAGES = [
+    { path: '/home', icon: 'home', title: 'Home', component: HomePage },
+    { path: '/contact', icon: 'contact', title: 'Reps Contact List', component: ContactsPage },
+    { path: '/document', icon: 'document', title: 'Construction Agreements', component: AgreementsPage },
+    { path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: RatesPage },
+    { path: '/basket', icon: 'basket', title: 'News Feed', component: NewsPage },
+    { path: '/calendar', icon: 'calendar', title: 'Training', component: TrainingPage },
+    { path: '/people', icon: 'people', title: 'Search Jobs', component: JobsPage },
+    { path: '/jobs', icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage },
+    { path: '/project', icon: 'project', title: 'Add Project', component: ProjectPage } // TODO: Needs Icon
+];
+
+// function ToRoutes(pagesArray) {
+//     return pagesArray.map(function(pageObj) {
+//         return new Route({ path: pageObj.path, component: pageObj.component, name: pageObj.title, useAsDefault: false });
+//     });
+// }
 
 @App({
     templateUrl: 'build/app.html',
@@ -40,15 +66,14 @@ class MyApp {
     this.platform = platform;
     this.menu = menu;
     this.initializeApp();
-    this.loggedIn = false;
+    this.loggedIn = true;
 
     // set our app's pages
-    this.app.pages = [
-      { icon: 'login', title: 'Login', component: LoginPage },
-    ];
+    this.app.pages = UNAUTHORIZED_PAGES;
+
     this.rootPage = LoginPage;
     if (this.loggedIn){
-      this.rootPage = HomePage;
+      this.rootPage = JobNotificationsPage;
       this.setLoggedin();
     }
   }
@@ -70,19 +95,16 @@ class MyApp {
   }
 
   setLoggedin(){
-    this.pages = [
-      { icon: 'home', title: 'Home', component: HomePage },
-      { icon: 'contact', title: 'Reps Contact List', component: ContactsPage },
-      { icon: 'document', title: 'Construction Agreements', component: AgreementsPage },
-      { icon: 'wifi', title: 'Wage Rates', component: RatesPage },
-      { icon: 'basket', title: 'News Feed', component: NewsPage },
-      { icon: 'calendar', title: 'Training', component: TrainingPage },
-      { icon: 'people', title: 'Search Jobs', component: JobsPage },
-      { icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage },
-      { icon: 'project', title: 'Add Project', component: ProjectPage },
-      { icon: 'login', title: 'Login', component: LoginPage },
-    ];
+    this.pages = AUTHORIZED_PAGES;
     this.loggedIn = true;
-    setTimeout(() => { this.rootPage = HomePage; }, 5);
+    // setTimeout(() => { this.rootPage = HomePage; }, 5);
+
+
+    // Toast.show("I'm a toast", 5000, "center").subscribe(
+    //   toast => {
+    //     console.log(toast);
+    //   }
+    // );
+
   }
 }

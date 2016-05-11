@@ -6,6 +6,8 @@
 </ion-navbar>
 
 <ion-content>
+  <searchbar></searchbar>
+
   <ion-list>
     <button ion-item *ngFor="#contact of contacts" (click)="itemTapped($event, contact)">
       {{contact.name}} ({{contact.title}})

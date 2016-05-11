@@ -6,8 +6,10 @@
 </ion-navbar>
 
 <ion-content>
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="filterItems($event)"></ion-searchbar>
+
   <ion-list>
-    <button ion-item *ngFor="#rate of rates" (click)="itemTapped($event, rate)">
+    <button ion-item *ngFor="#rate of filteredItems" (click)="itemTapped($event, rate)">
       <ion-icon name="{{rate.icon}}" item-left></ion-icon>
       {{rate.name}}
       <div style="min-width:200px;" class="item-note" item-right>
