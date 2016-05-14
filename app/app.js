@@ -85,12 +85,16 @@ class MyApp {
       StatusBar.styleDefault();
 
       Ionic.io();
+      let ionicPush = new Ionic.Push().init({
+          debug: true,
+          onNotification: (data) => {
+              console.log('New push notification received');
+              console.log(data);
+          }
+      });
 
-      var push = new Ionic.Push({});
-
-      push.register(function(token) {
-        // Log out your device token (Save this!)
-        console.log("Got Token:",token.token);
+      ionicPush.register(data => {
+          console.log("Device token:", data.token);
       });
 
     });
@@ -107,14 +111,10 @@ class MyApp {
   setLoggedin(){
     this.pages = AUTHORIZED_PAGES;
     this.loggedIn = true;
-    // setTimeout(() => { this.rootPage = HomePage; }, 5);
-
-
-    // Toast.show("I'm a toast", 5000, "center").subscribe(
-    //   toast => {
-    //     console.log(toast);
-    //   }
-    // );
-
   }
 }
+/*
+Notifications
+http://docs.ionic.io/docs/push-overview
+
+*/
