@@ -65,5 +65,13 @@ RUN:
 Dryden's TODO:
 ```
 	add phonegap/cordova notification plugins
+
+        > Native ionic notifications added
+        >
+
 	add search input filter for each page
+
+        > I don't understand what the search bars are searching.
+        > Are they actually filtering the existing content "items" or searching an API?
+
 ```

@@ -1,30 +1,45 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {ItemDetailsPage} from '../item-details/item-details';
-import {RestService} from '../../services/RestService';
+import {SearchablePage} from '../../shared/SearchablePage';
 
 
 @Page({
-  templateUrl: 'build/pages/agreements/list.html',
-  providers: [RestService]
+  templateUrl: 'build/pages/agreements/list.html'
 })
-export class AgreementsPage {
+export class AgreementsPage extends SearchablePage {
   static get parameters() {
-    return [[NavController], [NavParams], [RestService]];
+    return [[NavController], [NavParams]];
   }
 
-  constructor(nav, navParams, restService) {
-    this.restService = restService;
+  constructor(nav, navParams) {
+    super();
+
     this.nav = nav;
 
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+
+    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
+    'american-football', 'boat', 'bluetooth', 'build'];
+
+    this.filterField = "title";
   }
 
   ngOnInit() {
-        this.restService.findAgreements().subscribe(
-            data => this.agreements = data
-        );
+    this.initializeItems()
+  }
+
+  initializeItems() {
+    for(let i = 1; i < 5; i++) {
+      this.items.push({
+        title: 'Agreement ' + i,
+        note: 'This is item #' + i,
+        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+      });
     }
+
+    this.filteredItems = this.items;
+  }
 
   itemTapped(event, item) {
      this.nav.push(ItemDetailsPage, {

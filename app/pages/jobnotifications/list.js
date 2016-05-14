@@ -1,16 +1,19 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {ItemDetailsPage} from '../item-details/item-details';
+import {SearchablePage} from '../../shared/SearchablePage';
 
 
 @Page({
   templateUrl: 'build/pages/jobnotifications/list.html'
 })
-export class JobNotificationsPage {
+export class JobNotificationsPage extends SearchablePage {
   static get parameters() {
     return [[NavController], [NavParams]];
   }
 
   constructor(nav, navParams) {
+    super();
+
     this.nav = nav;
 
     // If we navigated to this page, we will have an item available as a nav param
@@ -19,7 +22,14 @@ export class JobNotificationsPage {
     this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
     'american-football', 'boat', 'bluetooth', 'build'];
 
-    this.items = [];
+    this.filterField = "title";
+  }
+
+  ngOnInit() {
+    this.initializeItems()
+  }
+
+  initializeItems() {
     for(let i = 1; i < 5; i++) {
       this.items.push({
         title: 'Job Notification ' + i,
@@ -27,6 +37,8 @@ export class JobNotificationsPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+
+    this.filteredItems = this.items;
   }
 
   itemTapped(event, item) {
