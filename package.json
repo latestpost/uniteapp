@@ -25,5 +25,10 @@
     "ionic-gulp-scripts-copy": "^1.0.0"
   },
   "name": "myionic2project",
-  "description": "MyIonic2Project: An Ionic project"
+  "description": "MyIonic2Project: An Ionic project",
+  "cordovaPlugins": [],
+  "cordovaPlatforms": [
+    "android",
+    "ios"
+  ]
 }

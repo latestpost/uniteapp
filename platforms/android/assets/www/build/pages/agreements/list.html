@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Agreements</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="#agreement of agreements" (click)="itemTapped($event, agreement)">
+      <ion-icon name="{{agreement.icon}}" item-left></ion-icon>
+      {{agreement.name}}
+      <div style="min-width:200px;" class="item-note" item-right>
+        <div>{{agreement.notes}}</div>
+      </div>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>

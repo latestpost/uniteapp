@@ -1,0 +1,22 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Wage Rates</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="#rate of rates" (click)="itemTapped($event, rate)">
+      <ion-icon name="{{rate.icon}}" item-left></ion-icon>
+      {{rate.name}}
+      <div style="min-width:200px;" class="item-note" item-right>
+        <div style="width:70%;float:left;">{{rate.grade}}</div>
+        <div style="width:30%;float:left;">£{{rate.amount}}</div>
+      </div>
+    </button>
+  </ion-list>
+  <div *ngIf="selectedItem" padding>
+    You navigated here from <b>{{selectedItem.title}}</b>
+  </div>
+</ion-content>
