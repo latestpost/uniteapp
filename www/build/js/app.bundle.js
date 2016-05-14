@@ -52,86 +52,88 @@ var AUTHORIZED_PAGES = [{ path: '/home', icon: 'home', title: 'Home', component:
 
 // http://ionicframework.com/docs/v2/api/config/Config/
 var MyApp = (_dec = (0, _ionicAngular.App)({
-  templateUrl: 'build/app.html',
-  providers: [(0, _core.provide)(_angular2Jwt.AuthHttp, {
-    useFactory: function useFactory(http) {
-      return new _angular2Jwt.AuthHttp(new _angular2Jwt.AuthConfig(), http);
-    },
-    deps: [_http.Http]
-  })],
-  config: {} }), _dec(_class = function () {
-  _createClass(MyApp, null, [{
-    key: 'parameters',
-    get: function get() {
-      return [[_ionicAngular.IonicApp], [_ionicAngular.Platform], [_ionicAngular.MenuController]];
+    templateUrl: 'build/app.html',
+    providers: [(0, _core.provide)(_angular2Jwt.AuthHttp, {
+        useFactory: function useFactory(http) {
+            return new _angular2Jwt.AuthHttp(new _angular2Jwt.AuthConfig(), http);
+        },
+        deps: [_http.Http]
+    })],
+    config: {} }), _dec(_class = function () {
+    _createClass(MyApp, null, [{
+        key: 'parameters',
+        get: function get() {
+            return [[_ionicAngular.IonicApp], [_ionicAngular.Platform], [_ionicAngular.MenuController]];
+        }
+    }]);
+
+    function MyApp(app, platform, menu) {
+        _classCallCheck(this, MyApp);
+
+        // set up our app
+        this.app = app;
+        this.app.main = this;
+        this.platform = platform;
+        this.menu = menu;
+        this.initializeApp();
+        this.loggedIn = true;
+
+        // set our app's pages
+        this.app.pages = UNAUTHORIZED_PAGES;
+
+        this.rootPage = _login.LoginPage;
+        if (this.loggedIn) {
+            this.rootPage = _list3.JobNotificationsPage;
+            this.setLoggedin();
+        }
     }
-  }]);
 
-  function MyApp(app, platform, menu) {
-    _classCallCheck(this, MyApp);
+    _createClass(MyApp, [{
+        key: 'initializeApp',
+        value: function initializeApp() {
+            this.platform.ready().then(function () {
+                // Okay, so the platform is ready and our plugins are available.
+                // Here you can do any higher level native things you might need.
+                _ionicNative.StatusBar.styleDefault();
 
-    // set up our app
-    this.app = app;
-    this.app.main = this;
-    this.platform = platform;
-    this.menu = menu;
-    this.initializeApp();
-    this.loggedIn = true;
+                Ionic.io();
+                var ionicPush = new Ionic.Push().init({
+                    debug: true,
+                    onNotification: function onNotification(data) {
+                        console.log('New push notification received');
+                        console.log(data);
+                    }
+                });
 
-    // set our app's pages
-    this.app.pages = UNAUTHORIZED_PAGES;
+                ionicPush.register(function (data) {
+                    console.log("Device token:", data.token);
+                });
+            });
+        }
+    }, {
+        key: 'openPage',
+        value: function openPage(page) {
+            // close the menu when clicking a link from the menu
+            this.menu.close();
+            // navigate to the new page if it is not the current page
+            var nav = this.app.getComponent('nav');
+            nav.setRoot(page.component);
+        }
+    }, {
+        key: 'setLoggedin',
+        value: function setLoggedin() {
+            this.pages = AUTHORIZED_PAGES;
+            this.loggedIn = true;
+        }
+    }]);
 
-    this.rootPage = _login.LoginPage;
-    if (this.loggedIn) {
-      this.rootPage = _list3.JobNotificationsPage;
-      this.setLoggedin();
-    }
-  }
-
-  _createClass(MyApp, [{
-    key: 'initializeApp',
-    value: function initializeApp() {
-      this.platform.ready().then(function () {
-        // Okay, so the platform is ready and our plugins are available.
-        // Here you can do any higher level native things you might need.
-        _ionicNative.StatusBar.styleDefault();
-
-        Ionic.io();
-
-        var push = new Ionic.Push({});
-
-        push.register(function (token) {
-          // Log out your device token (Save this!)
-          console.log("Got Token:", token.token);
-        });
-      });
-    }
-  }, {
-    key: 'openPage',
-    value: function openPage(page) {
-      // close the menu when clicking a link from the menu
-      this.menu.close();
-      // navigate to the new page if it is not the current page
-      var nav = this.app.getComponent('nav');
-      nav.setRoot(page.component);
-    }
-  }, {
-    key: 'setLoggedin',
-    value: function setLoggedin() {
-      this.pages = AUTHORIZED_PAGES;
-      this.loggedIn = true;
-      // setTimeout(() => { this.rootPage = HomePage; }, 5);
-
-      // Toast.show("I'm a toast", 5000, "center").subscribe(
-      //   toast => {
-      //     console.log(toast);
-      //   }
-      // );
-    }
-  }]);
-
-  return MyApp;
+    return MyApp;
 }()) || _class);
+/*
+Notifications
+http://docs.ionic.io/docs/push-overview
+
+*/
 
 },{"./pages/agreements/list":3,"./pages/contacts/list":5,"./pages/homepage/homepage":6,"./pages/jobnotifications/list":8,"./pages/jobs/list":10,"./pages/login/login":11,"./pages/news/list":12,"./pages/project/project":13,"./pages/rates/list":15,"./pages/training/list":16,"angular2-jwt":20,"angular2/core":150,"angular2/http":151,"es6-shim":391,"ionic-angular":467,"ionic-native":489}],2:[function(require,module,exports){
 "use strict";
