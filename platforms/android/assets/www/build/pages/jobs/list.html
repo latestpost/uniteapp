@@ -6,8 +6,10 @@
 </ion-navbar>
 
 <ion-content>
+    <ion-searchbar [(ngModel)]="searchQuery" (input)="filterItems($event)"></ion-searchbar>
+
     <ion-list>
-        <button ion-item *ngFor="#job of jobs" (click)="itemTapped($event, job)">
+        <button ion-item *ngFor="#job of filteredItems" (click)="itemTapped($event, job)">
             <ion-thumbnail item-left>
                 <img src="{{job.thumb}}"/>
             </ion-thumbnail>

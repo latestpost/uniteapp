@@ -83,6 +83,16 @@ class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+
+      Ionic.io();
+
+      var push = new Ionic.Push({});
+
+      push.register(function(token) {
+        // Log out your device token (Save this!)
+        console.log("Got Token:",token.token);
+      });
+
     });
   }
 
