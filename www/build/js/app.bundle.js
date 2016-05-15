@@ -441,16 +441,15 @@ var HomePage = exports.HomePage = (_dec = (0, _ionicAngular.Page)({
     key: 'doAlert',
     value: function doAlert() {
       var alert = _ionicAngular.Alert.create({
-        title: 'New Friend!',
+        title: 'Notification Id',
         subTitle: 'RegisterId=' + this.app.main.registerId,
         buttons: ['OK']
       });
 
-      /** TODO Register service for notifications - build in sails
-      this.restService.register(this.app.main.registerId)
-          .subscribe((json) => {
-          });
-      **/
+      var data = {};
+      data.id = this.app.main.registerId;
+
+      this.restService.register(data).subscribe(function (json) {});
       this.nav.present(alert);
     }
   }]);
@@ -1101,7 +1100,7 @@ var jobsURL = _config.SERVER_URL + 'project',
     trainingURL = _config.SERVER_URL + 'training',
     newsURL = _config.SERVER_URL + 'news',
     loginURL = _config.SERVER_URL + 'auth',
-    registerURL = 'http://localhost:3000/' + 'register'; //**TODO move to sails
+    registerURL = _config.SERVER_URL + 'register/register';
 localStorage;
 
 var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {

@@ -23,16 +23,17 @@ export class HomePage {
 
   doAlert() {
     let alert = Alert.create({
-      title: 'New Friend!',
+      title: 'Notification Id',
       subTitle: 'RegisterId=' + this.app.main.registerId,
       buttons: ['OK']
     });
 
-    /** TODO Register service for notifications - build in sails
-    this.restService.register(this.app.main.registerId)
+    let data = {};
+    data.id = this.app.main.registerId;
+
+    this.restService.register(data)
         .subscribe((json) => {
         });
-    **/
     this.nav.present(alert);
   }
 }
