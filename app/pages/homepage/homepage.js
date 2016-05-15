@@ -12,7 +12,7 @@ export class HomePage {
     return [[NavController],[IonicApp],[RestService]];
   }
 
-  constructor(nav,app,restService) {
+  constructor(nav, app, restService) {
     this.nav = nav;
     this.app = app;
     this.restService = restService;
@@ -28,10 +28,11 @@ export class HomePage {
       buttons: ['OK']
     });
 
+    /** TODO Register service for notifications - build in sails
     this.restService.register(this.app.main.registerId)
         .subscribe((json) => {
         });
-
+    **/
     this.nav.present(alert);
   }
 }

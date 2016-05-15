@@ -107,14 +107,28 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
         push.on('registration', function (data) {
           console.log(data.registrationId);
           _this.registerId = data.registrationId;
+          _this.doAlert('RegisterId', _this.registerId);
         });
         push.on('notification', function (data) {
-          alert("Message = " + data.message);
+          _this.doAlert(data.title, data.message);
         });
         push.on('error', function (e) {
           console.log(e.message);
         });
       });
+    }
+  }, {
+    key: 'doAlert',
+    value: function doAlert(title, message) {
+      var alert = _ionicAngular.Alert.create({
+        title: title,
+        subTitle: message,
+        buttons: ['OK']
+      });
+
+      var nav = this.app.getComponent('nav');
+      nav.present(alert);
+      this.menu.present(alert);
     }
   }, {
     key: 'openPage',
@@ -432,8 +446,11 @@ var HomePage = exports.HomePage = (_dec = (0, _ionicAngular.Page)({
         buttons: ['OK']
       });
 
-      this.restService.register(this.app.main.registerId).subscribe(function (json) {});
-
+      /** TODO Register service for notifications - build in sails
+      this.restService.register(this.app.main.registerId)
+          .subscribe((json) => {
+          });
+      **/
       this.nav.present(alert);
     }
   }]);
@@ -1084,7 +1101,7 @@ var jobsURL = _config.SERVER_URL + 'project',
     trainingURL = _config.SERVER_URL + 'training',
     newsURL = _config.SERVER_URL + 'news',
     loginURL = _config.SERVER_URL + 'auth',
-    registerURL = 'http://localhost:3000/' + 'register';
+    registerURL = 'http://localhost:3000/' + 'register'; //**TODO move to sails
 localStorage;
 
 var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {

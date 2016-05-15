@@ -24,6 +24,10 @@ module.exports.policies = {
   'create': true // We dont need authorization here, allowing public access
 },
 
+'RegisterController': {
+  '*': true // We dont need authorization here, allowing public access
+},
+
 'AuthController': {
   '*': true // We dont need authorization here, allowing public access
 },

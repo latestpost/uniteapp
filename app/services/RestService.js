@@ -13,7 +13,7 @@ let jobsURL = SERVER_URL + 'project',
     trainingURL = SERVER_URL + 'training',
     newsURL = SERVER_URL + 'news',
     loginURL = SERVER_URL + 'auth',
-    registerURL = 'http://localhost:3000/' + 'register'
+    registerURL = 'http://localhost:3000/' + 'register' //**TODO move to sails
     localStorage
 
 

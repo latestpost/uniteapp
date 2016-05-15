@@ -4,7 +4,7 @@ import {AuthHttp, AuthConfig} from 'angular2-jwt';
 import {Http} from 'angular2/http'
 import {provide} from 'angular2/core';
 
-import {App, IonicApp, Platform, MenuController, Alert} from 'ionic-angular';
+import {App, IonicApp, Platform, MenuController, Alert, NavController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 
 import {AgreementsPage} from './pages/agreements/list';
@@ -94,14 +94,27 @@ class MyApp {
       push.on('registration', (data) => {
         console.log(data.registrationId);
         this.registerId = data.registrationId;
+        this.doAlert('RegisterId',this.registerId);
       });
       push.on('notification', (data) => {
-        alert("Message = " + data.message);
+        this.doAlert(data.title, data.message);
       });
       push.on('error', (e) => {
         console.log(e.message);
       });
     });
+  }
+
+  doAlert(title, message) {
+    let alert = Alert.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+
+    let nav = this.app.getComponent('nav');
+    nav.present(alert);
+    this.menu.present(alert);
   }
 
   openPage(page) {
