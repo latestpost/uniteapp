@@ -13,6 +13,7 @@ let jobsURL = SERVER_URL + 'project',
     trainingURL = SERVER_URL + 'training',
     newsURL = SERVER_URL + 'news',
     loginURL = SERVER_URL + 'auth',
+    registerURL = 'http://localhost:3000/' + 'register'
     localStorage
 
 
@@ -31,6 +32,12 @@ export class RestService {
 
     login(credentials) {
       return this.http.post(loginURL, JSON.stringify(credentials), { headers: this.contentHeader })
+        .map(res => res.json())
+        .catch(this.handleError);
+    }
+
+    register(id) {
+      return this.http.post(registerURL, JSON.stringify(id), { headers: this.contentHeader })
         .map(res => res.json())
         .catch(this.handleError);
     }

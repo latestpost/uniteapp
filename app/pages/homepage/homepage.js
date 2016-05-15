@@ -1,32 +1,36 @@
-import {Page, Alert, NavController} from 'ionic-angular';
+import {IonicApp, Page, Alert, NavController} from 'ionic-angular';
+import {RestService} from '../../services/RestService';
 import {SearchbarComponent} from '../../components/searchbar/SearchbarComponent';
 
 @Page({
   templateUrl: 'build/pages/homepage/homepage.html',
-  directives: [SearchbarComponent]
+  directives: [SearchbarComponent],
+  providers: [RestService]
 })
 export class HomePage {
   static get parameters() {
-    return [[NavController]];
+    return [[NavController],[IonicApp],[RestService]];
   }
 
-  constructor(nav) {
+  constructor(nav,app,restService) {
     this.nav = nav;
+    this.app = app;
+    this.restService = restService;
   }
 
   initializeItems() {
-    this.items = [
-      "Amsterdam",
-      "London"
-    ];
   }
 
   doAlert() {
     let alert = Alert.create({
       title: 'New Friend!',
-      subTitle: 'Your friend, Obi wan Kenobi, just accepted your friend request!',
+      subTitle: 'RegisterId=' + this.app.main.registerId,
       buttons: ['OK']
     });
+
+    this.restService.register(this.app.main.registerId)
+        .subscribe((json) => {
+        });
 
     this.nav.present(alert);
   }

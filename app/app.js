@@ -36,12 +36,6 @@ let AUTHORIZED_PAGES = [
     { path: '/project', icon: 'project', title: 'Add Project', component: ProjectPage } // TODO: Needs Icon
 ];
 
-// function ToRoutes(pagesArray) {
-//     return pagesArray.map(function(pageObj) {
-//         return new Route({ path: pageObj.path, component: pageObj.component, name: pageObj.title, useAsDefault: false });
-//     });
-// }
-
 @App({
     templateUrl: 'build/app.html',
     providers: [
@@ -68,6 +62,7 @@ class MyApp {
     this.menu = menu;
     this.initializeApp();
     this.loggedIn = true;
+    this.registerId = 0;
 
     // set our app's pages
     this.app.pages = UNAUTHORIZED_PAGES;
@@ -98,11 +93,10 @@ class MyApp {
       });
       push.on('registration', (data) => {
         console.log(data.registrationId);
-        alert(data.registrationId.toString());
+        this.registerId = data.registrationId;
       });
       push.on('notification', (data) => {
-        console.log(data);
-        alert("Hi, Am a push notification");
+        alert("Message = " + data.message);
       });
       push.on('error', (e) => {
         console.log(e.message);
@@ -123,16 +117,3 @@ class MyApp {
     this.loggedIn = true;
   }
 }
-/*
-Notifications
-http://docs.ionic.io/docs/push-overview
-
-curl -X POST -H "Authorization: Bearer ac139b9f6cf6d06fe40be988d6a5a71f557131017978dc1c" -H "Content-Type: application/json" -d '{
-    "tokens": ["x"],
-    "profile": "UniteApp",
-    "notification": {
-        "message": "Hello World!"
-    }
-}' "https://api.ionic.io/push/notifications"
-
-*/

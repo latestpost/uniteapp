@@ -11,14 +11,19 @@ app.get('/', function (req, res) {
     res.send("This is basic route");
 });
 
+app.get('/register', function (req, res) {
+    console.log(req.query);
+    console.log('Register = ' + req.query.registerId);
+});
+
 app.get('/push', function (req, res) {
     var device_tokens = []; //create array for storing device tokens
 
     var retry_times = 4; //the number of times to retry sending the message if it fails
     var sender = new gcm.Sender(gcmApiKey); //create a new sender
     var message = new gcm.Message(); //create a new message
-    message.addData('title', 'PushTitle');
-    message.addData('message', "Push message");
+    message.addData('title', req.query.title);
+    message.addData('message', req.query.message);
     message.addData('sound', 'default');
     message.collapseKey = 'Testing Push'; //grouping messages
     message.delayWhileIdle = true; //delay sending while receiving device is offline
