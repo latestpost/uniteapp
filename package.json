@@ -26,8 +26,8 @@
     "ionic-gulp-sass-build": "^1.0.0",
     "ionic-gulp-scripts-copy": "^1.0.0"
   },
-  "name": "myionic2project",
-  "description": "MyIonic2Project: An Ionic project",
+  "name": "Unite4JobsApp",
+  "description": "Unite4JobsApp - Construction",
   "cordovaPlugins": [
     "cordova-plugin-x-toast",
     {

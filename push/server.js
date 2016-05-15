@@ -29,7 +29,7 @@ app.get('/push', function (req, res) {
     //in your ionic v2 app and update device_tokens[0] with it for testing.
     //Later save device tokens to db and
     //get back all tokens and push to multiple devices
-    device_tokens[0] = "ePM1hoCN6K8:APA91bGYgolLJKogDdBPlh2DQev2hBu_7aRS-VnBBjwXvjGszXmJkql-rAIAmYwlFk3xDa_Mf4GcuLQDPhtS_per4O1RMSTlrBvmLD7OFXOU8O9Ch1FuvqYF4gbUna0_-ZmwcPkkhFii";
+    device_tokens[0] = "d-eBT04BIXs:APA91bGcILn-vS4BBPzv43W_Sd_p9FTb4qD5JvCta8VB7LXWjfxpiDR-6Uucsbyte9Zhy-mM24wdqFffJRGW_iDmB8yeficWtwPwj68ugwqTYoIyOklhQAOrP1-IgGh8ipo-irB_lT33";
     sender.send(message, device_tokens[0], retry_times, function (result) {
         console.log('push sent to: ' + device_tokens);
         res.status(200).send('Pushed notification ' + device_tokens);
