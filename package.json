@@ -29,7 +29,13 @@
   "name": "myionic2project",
   "description": "MyIonic2Project: An Ionic project",
   "cordovaPlugins": [
-    "cordova-plugin-x-toast"
+    "cordova-plugin-x-toast",
+    {
+      "variables": {
+        "SENDER_ID": "1036416855963"
+      },
+      "locator": "phonegap-plugin-push"
+    }
   ],
   "cordovaPlatforms": []
 }
