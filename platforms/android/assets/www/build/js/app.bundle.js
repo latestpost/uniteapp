@@ -1100,7 +1100,7 @@ var jobsURL = _config.SERVER_URL + 'project',
     trainingURL = _config.SERVER_URL + 'training',
     newsURL = _config.SERVER_URL + 'news',
     loginURL = _config.SERVER_URL + 'auth',
-    registerURL = _config.SERVER_URL + 'register/register'; //**TODO move to sails
+    registerURL = _config.SERVER_URL + 'register/register';
 localStorage;
 
 var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_class = function () {
@@ -1129,7 +1129,6 @@ var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_c
     }, {
         key: 'register',
         value: function register(id) {
-            console.log(JSON.stringify(id));
             return this.http.post(registerURL, JSON.stringify(id), { headers: this.contentHeader }).map(function (res) {
                 return res.json();
             }).catch(this.handleError);
