@@ -41,7 +41,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var UNAUTHORIZED_PAGES = [{ path: '/login', icon: 'login', title: 'Login', component: _login.LoginPage }];
 
-var AUTHORIZED_PAGES = [{ path: '/home', icon: 'home', title: 'Home', component: _homepage.HomePage }, { path: '/contact', icon: 'contact', title: 'Reps Contact List', component: _list2.ContactsPage }, { path: '/document', icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: _list6.RatesPage }, { path: '/basket', icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { path: '/calendar', icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { path: '/people', icon: 'people', title: 'Search Jobs', component: _list4.JobsPage }, { path: '/jobs', icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage }, { path: '/project', icon: 'project', title: 'Add Project', component: _project.ProjectPage } // TODO: Needs Icon
+var AUTHORIZED_PAGES = [{ path: '/home', icon: 'home', title: 'Home', component: _homepage.HomePage }, { path: '/contact', icon: 'contact', title: 'Reps Contact List', component: _list2.ContactsPage }, { path: '/document', icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: _list6.RatesPage }, { path: '/basket', icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { path: '/calendar', icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { path: '/people', icon: 'people', title: 'Search Jobs', component: _list4.JobsPage }, { path: '/messages', icon: 'wifi', title: 'Messages', component: _list3.MessagesPage }, { path: '/project', icon: 'project', title: 'Add Project', component: _project.ProjectPage } // TODO: Needs Icon
 ];
 
 // http://ionicframework.com/docs/v2/api/config/Config/
@@ -78,7 +78,7 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
 
     this.rootPage = _login.LoginPage;
     if (this.loggedIn) {
-      this.rootPage = JobNotificationsPage;
+      this.rootPage = _homepage.HomePage;
       this.setLoggedin(); //** TODO remove at some point
     }
   }

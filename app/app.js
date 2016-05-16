@@ -32,7 +32,7 @@ let AUTHORIZED_PAGES = [
     { path: '/basket', icon: 'basket', title: 'News Feed', component: NewsPage },
     { path: '/calendar', icon: 'calendar', title: 'Training', component: TrainingPage },
     { path: '/people', icon: 'people', title: 'Search Jobs', component: JobsPage },
-    { path: '/jobs', icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage },
+    { path: '/messages', icon: 'wifi', title: 'Messages', component: MessagesPage },
     { path: '/project', icon: 'project', title: 'Add Project', component: ProjectPage } // TODO: Needs Icon
 ];
 
@@ -69,7 +69,7 @@ class MyApp {
 
     this.rootPage = LoginPage;
     if (this.loggedIn){
-      this.rootPage = JobNotificationsPage;
+      this.rootPage = HomePage;
       this.setLoggedin(); //** TODO remove at some point
     }
   }
