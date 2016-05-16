@@ -1,0 +1,21 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Search Jobs & Projects</ion-title>
+</ion-navbar>
+
+<ion-content>
+    <ion-searchbar [(ngModel)]="searchQuery" (input)="filterItems($event)"></ion-searchbar>
+
+    <ion-list>
+        <button ion-item *ngFor="#job of filteredItems" (click)="itemTapped($event, job)">
+            <ion-thumbnail item-left>
+                <img src="{{job.thumb}}"/>
+            </ion-thumbnail>
+            <h2>{{job.date}}</h2>
+            <h2>{{job.title}}</h2>
+            <p>{{job.description}}</p>
+        </button>
+    </ion-list>
+</ion-content>
