@@ -23,7 +23,7 @@ var _list2 = require('./pages/contacts/list');
 
 var _homepage = require('./pages/homepage/homepage');
 
-var _list3 = require('./pages/jobnotifications/list');
+var _list3 = require('./pages/messages/list');
 
 var _list4 = require('./pages/jobs/list');
 
@@ -41,7 +41,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var UNAUTHORIZED_PAGES = [{ path: '/login', icon: 'login', title: 'Login', component: _login.LoginPage }];
 
-var AUTHORIZED_PAGES = [{ path: '/home', icon: 'home', title: 'Home', component: _homepage.HomePage }, { path: '/contact', icon: 'contact', title: 'Reps Contact List', component: _list2.ContactsPage }, { path: '/document', icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: _list6.RatesPage }, { path: '/basket', icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { path: '/calendar', icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { path: '/people', icon: 'people', title: 'Search Jobs', component: _list4.JobsPage }, { path: '/jobs', icon: 'wifi', title: 'Job Notifications', component: _list3.JobNotificationsPage }, { path: '/project', icon: 'project', title: 'Add Project', component: _project.ProjectPage } // TODO: Needs Icon
+var AUTHORIZED_PAGES = [{ path: '/home', icon: 'home', title: 'Home', component: _homepage.HomePage }, { path: '/contact', icon: 'contact', title: 'Reps Contact List', component: _list2.ContactsPage }, { path: '/document', icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: _list6.RatesPage }, { path: '/basket', icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { path: '/calendar', icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { path: '/people', icon: 'people', title: 'Search Jobs', component: _list4.JobsPage }, { path: '/jobs', icon: 'wifi', title: 'Job Notifications', component: JobNotificationsPage }, { path: '/project', icon: 'project', title: 'Add Project', component: _project.ProjectPage } // TODO: Needs Icon
 ];
 
 // http://ionicframework.com/docs/v2/api/config/Config/
@@ -78,8 +78,8 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
 
     this.rootPage = _login.LoginPage;
     if (this.loggedIn) {
-      this.rootPage = _list3.JobNotificationsPage;
-      this.setLoggedin();
+      this.rootPage = JobNotificationsPage;
+      this.setLoggedin(); //** TODO remove at some point
     }
   }
 
@@ -107,7 +107,6 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
         push.on('registration', function (data) {
           console.log(data.registrationId);
           _this.registerId = data.registrationId;
-          _this.doAlert('RegisterId', _this.registerId);
         });
         push.on('notification', function (data) {
           _this.doAlert(data.title, data.message);
@@ -150,7 +149,7 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
   return MyApp;
 }()) || _class);
 
-},{"./pages/agreements/list":3,"./pages/contacts/list":5,"./pages/homepage/homepage":6,"./pages/jobnotifications/list":8,"./pages/jobs/list":10,"./pages/login/login":11,"./pages/news/list":12,"./pages/project/project":13,"./pages/rates/list":15,"./pages/training/list":16,"angular2-jwt":20,"angular2/core":150,"angular2/http":151,"es6-shim":391,"ionic-angular":467,"ionic-native":489}],2:[function(require,module,exports){
+},{"./pages/agreements/list":3,"./pages/contacts/list":5,"./pages/homepage/homepage":6,"./pages/jobs/list":9,"./pages/login/login":10,"./pages/messages/list":11,"./pages/news/list":12,"./pages/project/project":13,"./pages/rates/list":15,"./pages/training/list":16,"angular2-jwt":20,"angular2/core":150,"angular2/http":151,"es6-shim":391,"ionic-angular":467,"ionic-native":489}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -495,90 +494,8 @@ var ItemDetailsPage = exports.ItemDetailsPage = (_dec = (0, _ionicAngular.Page)(
 }()) || _class);
 
 },{"ionic-angular":467}],8:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.JobNotificationsPage = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _dec, _class;
-
-var _ionicAngular = require('ionic-angular');
-
-var _itemDetails = require('../item-details/item-details');
-
-var _SearchablePage2 = require('../../shared/SearchablePage');
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var JobNotificationsPage = exports.JobNotificationsPage = (_dec = (0, _ionicAngular.Page)({
-  templateUrl: 'build/pages/jobnotifications/list.html'
-}), _dec(_class = function (_SearchablePage) {
-  _inherits(JobNotificationsPage, _SearchablePage);
-
-  _createClass(JobNotificationsPage, null, [{
-    key: 'parameters',
-    get: function get() {
-      return [[_ionicAngular.NavController], [_ionicAngular.NavParams]];
-    }
-  }]);
-
-  function JobNotificationsPage(nav, navParams) {
-    _classCallCheck(this, JobNotificationsPage);
-
-    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(JobNotificationsPage).call(this));
-
-    _this.nav = nav;
-
-    // If we navigated to this page, we will have an item available as a nav param
-    _this.selectedItem = navParams.get('item');
-
-    _this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane', 'american-football', 'boat', 'bluetooth', 'build'];
-
-    _this.filterField = "title";
-    return _this;
-  }
-
-  _createClass(JobNotificationsPage, [{
-    key: 'ngOnInit',
-    value: function ngOnInit() {
-      this.initializeItems();
-    }
-  }, {
-    key: 'initializeItems',
-    value: function initializeItems() {
-      for (var i = 1; i < 5; i++) {
-        this.items.push({
-          title: 'Job Notification ' + i,
-          note: 'This is item #' + i,
-          icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-        });
-      }
-
-      this.filteredItems = this.items;
-    }
-  }, {
-    key: 'itemTapped',
-    value: function itemTapped(event, item) {
-      this.nav.push(_itemDetails.ItemDetailsPage, {
-        item: item
-      });
-    }
-  }]);
-
-  return JobNotificationsPage;
-}(_SearchablePage2.SearchablePage)) || _class);
-
-},{"../../shared/SearchablePage":19,"../item-details/item-details":7,"ionic-angular":467}],9:[function(require,module,exports){
 arguments[4][4][0].apply(exports,arguments)
-},{"dup":4,"ionic-angular":467}],10:[function(require,module,exports){
+},{"dup":4,"ionic-angular":467}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -658,7 +575,7 @@ var JobsPage = exports.JobsPage = (_dec = (0, _ionicAngular.Page)({
   return JobsPage;
 }(_SearchablePage2.SearchablePage)) || _class);
 
-},{"../../services/RestService":17,"../../shared/SearchablePage":19,"./item-details":9,"ionic-angular":467}],11:[function(require,module,exports){
+},{"../../services/RestService":17,"../../shared/SearchablePage":19,"./item-details":8,"ionic-angular":467}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -713,6 +630,7 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
             //**TODO auto login from storage
             credentials.email = 'test@test.com';
             credentials.password = 'test';
+            credentials.notificationId = this.app.registerId;
             this.restService.login(credentials).subscribe(function (json) {
                 // store jwt token
                 var token = json.token;
@@ -726,7 +644,89 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
     return LoginPage;
 }()) || _class);
 
-},{"../../services/RestService":17,"angular2/common":148,"ionic-angular":467}],12:[function(require,module,exports){
+},{"../../services/RestService":17,"angular2/common":148,"ionic-angular":467}],11:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.MessagesPage = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _dec, _class;
+
+var _ionicAngular = require('ionic-angular');
+
+var _itemDetails = require('../item-details/item-details');
+
+var _SearchablePage2 = require('../../shared/SearchablePage');
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MessagesPage = exports.MessagesPage = (_dec = (0, _ionicAngular.Page)({
+  templateUrl: 'build/pages/messages/list.html'
+}), _dec(_class = function (_SearchablePage) {
+  _inherits(MessagesPage, _SearchablePage);
+
+  _createClass(MessagesPage, null, [{
+    key: 'parameters',
+    get: function get() {
+      return [[_ionicAngular.NavController], [_ionicAngular.NavParams]];
+    }
+  }]);
+
+  function MessagesPage(nav, navParams) {
+    _classCallCheck(this, MessagesPage);
+
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MessagesPage).call(this));
+
+    _this.nav = nav;
+
+    // If we navigated to this page, we will have an item available as a nav param
+    _this.selectedItem = navParams.get('item');
+
+    _this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane', 'american-football', 'boat', 'bluetooth', 'build'];
+
+    _this.filterField = "title";
+    return _this;
+  }
+
+  _createClass(MessagesPage, [{
+    key: 'ngOnInit',
+    value: function ngOnInit() {
+      this.initializeItems();
+    }
+  }, {
+    key: 'initializeItems',
+    value: function initializeItems() {
+      for (var i = 1; i < 5; i++) {
+        this.items.push({
+          title: 'Message ' + i,
+          note: 'This is item #' + i,
+          icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+        });
+      }
+
+      this.filteredItems = this.items;
+    }
+  }, {
+    key: 'itemTapped',
+    value: function itemTapped(event, item) {
+      this.nav.push(_itemDetails.ItemDetailsPage, {
+        item: item
+      });
+    }
+  }]);
+
+  return MessagesPage;
+}(_SearchablePage2.SearchablePage)) || _class);
+
+},{"../../shared/SearchablePage":19,"../item-details/item-details":7,"ionic-angular":467}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
