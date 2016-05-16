@@ -10,7 +10,7 @@ import {StatusBar} from 'ionic-native';
 import {AgreementsPage} from './pages/agreements/list';
 import {ContactsPage} from './pages/contacts/list';
 import {HomePage} from './pages/homepage/homepage';
-import {JobNotificationsPage} from './pages/jobnotifications/list';
+import {MessagesPage} from './pages/messages/list';
 import {JobsPage} from './pages/jobs/list';
 import {LoginPage} from './pages/login/login';
 import {NewsPage} from './pages/news/list';
@@ -70,7 +70,7 @@ class MyApp {
     this.rootPage = LoginPage;
     if (this.loggedIn){
       this.rootPage = JobNotificationsPage;
-      this.setLoggedin();
+      this.setLoggedin(); //** TODO remove at some point
     }
   }
 
@@ -94,7 +94,6 @@ class MyApp {
       push.on('registration', (data) => {
         console.log(data.registrationId);
         this.registerId = data.registrationId;
-        this.doAlert('RegisterId',this.registerId);
       });
       push.on('notification', (data) => {
         this.doAlert(data.title, data.message);

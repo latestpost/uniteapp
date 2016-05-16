@@ -9,6 +9,7 @@ module.exports = {
   index: function (req, res) {
     var email = req.param('email');
     var password = req.param('password');
+    var notificationId = req.param('notificationId');
 
     if (!email || !password) {
       return res.json(401, {err: 'email and password required'});
@@ -27,6 +28,9 @@ module.exports = {
         if (!valid) {
           return res.json(401, {err: 'invalid email or password'});
         } else {
+
+          //** TODO attach notificationId to user model
+
           res.json({
             user: user,
             token: jwToken.issue({id : user.id })

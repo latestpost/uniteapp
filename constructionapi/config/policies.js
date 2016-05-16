@@ -24,7 +24,7 @@ module.exports.policies = {
   'create': true // We dont need authorization here, allowing public access
 },
 
-'RegisterController': {
+'NotificationController': {
   '*': true // We dont need authorization here, allowing public access
 },
 

@@ -4,7 +4,7 @@ import {SearchablePage} from '../../shared/SearchablePage';
 
 
 @Page({
-  templateUrl: 'build/pages/jobnotifications/list.html'
+  templateUrl: 'build/pages/messages/list.html'
 })
 export class MessagesPage extends SearchablePage {
   static get parameters() {
@@ -32,7 +32,7 @@ export class MessagesPage extends SearchablePage {
   initializeItems() {
     for(let i = 1; i < 5; i++) {
       this.items.push({
-        title: 'Job Notification ' + i,
+        title: 'Message ' + i,
         note: 'This is item #' + i,
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });

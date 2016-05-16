@@ -1,5 +1,5 @@
 /**
- * AuthController
+ * NotificationController
  *
  * @description :: Server-side logic for managing notifications
  * @help        :: See http://links.sailsjs.org/docs/controllers
@@ -40,6 +40,12 @@ module.exports = {
     sender.send(message, device_tokens[0], retry_times, function (result) {
         console.log('push sent to: ' + device_tokens);
         res.status(200).send('Pushed notification ' + device_tokens);
+        Message.create(message, function Obj(err, o) {
+            if (err) {
+                console.log(err);
+            }
+        });
+
     }, function (err) {
         res.status(500).send('failed to push notification ');
     });

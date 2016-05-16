@@ -28,6 +28,7 @@ export class LoginPage {
       //**TODO auto login from storage
       credentials.email = 'test@test.com';
       credentials.password = 'test';
+      credentials.notificationId = this.app.registerId;
       this.restService.login(credentials)
           .subscribe((json) => {
               // store jwt token
