@@ -30,6 +30,7 @@ export class HomePage {
 
     let data = {};
     data.id = this.app.main.registerId;
+    console.log(data.id);
 
     this.restService.register(data)
         .subscribe((json) => {

@@ -19,7 +19,8 @@ module.exports = {
   push: function (req, res) {
 
     message = {};
-    message.tokens = ['d-eBT04BIXs:APA91bGcILn-vS4BBPzv43W_Sd_p9FTb4qD5JvCta8VB7LXWjfxpiDR-6Uucsbyte9Zhy-mM24wdqFffJRGW_iDmB8yeficWtwPwj68ugwqTYoIyOklhQAOrP1-IgGh8ipo-irB_lT33'];
+    message.tokens =
+     ['ddjMj9oUSMc:APA91bGl7qBxzhKM5mNMEMgJu9RovRY4lEZIWKBR7ZMbJ9xLwNWlSDhI0bZYeIw5JDijFn0TOkMOkHmCxfVdQTzfk7TH4m45-Im3VNfZPIYqHEUbRR8Q_2HUSDeridih8QDjXjpAFEKE'];
     message.title = 'Test title';
     message.body = 'Test message body';
     PusherService.pushAndroid(message);
@@ -30,6 +31,7 @@ module.exports = {
             console.log(err);
         }
     });
+    res.status(200).send('Pushed notification');
 
   }
 }

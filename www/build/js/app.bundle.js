@@ -451,6 +451,7 @@ var HomePage = exports.HomePage = (_dec = (0, _ionicAngular.Page)({
 
       var data = {};
       data.id = this.app.main.registerId;
+      console.log(data.id);
 
       this.restService.register(data).subscribe(function (json) {});
       this.nav.present(alert);
