@@ -2,14 +2,17 @@
 //https://github.com/ghaiklor/sails-service-pusher
 
 var Pusher = require("sails-service-pusher");
+var GCM = require('gcm').GCM;
+var apiKey = 'AIzaSyB1RqR0MrCSRCaYomdfmXEl8ado0en1fe8';
+var gcm = new GCM(apiKey);
 
 var android = Pusher('android', {
   device: [], // Array of string with device tokens
   provider: {
     apiKey: 'AIzaSyB1RqR0MrCSRCaYomdfmXEl8ado0en1fe8', // Your Google Server API Key
     maxSockets: 12, // Max number of sockets to have open at one time
-    proxy: 'http://your-proxy.com' // This is [just like passing a proxy on to request](https://github.com/request/request#proxies)
-  },
+    proxy: ''
+},
   notification: {
     title: 'Android Test Push', // Indicates notification title
     body: 'Hey, there!', // Indicates notification body text
@@ -20,12 +23,11 @@ var android = Pusher('android', {
   }
 });
 
-//**TODO drop pem into folder
 var ios = Pusher('ios', {
   device: [], // Array of string with device tokens
   provider: {
-    cert: 'devcert.pem', // The filename of the connection certificate to load from disk
-    key: 'devkey.pem', // The filename of the connection key to load from disk
+    cert: 'api/services/devcert.pem', // The filename of the connection certificate to load from disk
+    key: 'api/services/devkey.pem', // The filename of the connection key to load from disk
     ca: [], // An array of trusted certificates
     pfx: '', // File path for private key, certificate and CA certs in PFX or PKCS12 format
     passphrase: '', // The passphrase for the connection key
@@ -54,17 +56,26 @@ var ios = Pusher('ios', {
 
 module.exports = {
     pushAndroid: function(options) {
-      android
-        .send(options.tokens, {
-          title: options.title,
-          body: options.body
-        })
-        .then(console.log.bind(console))
-        .catch(console.error.bind(console));
+
+        var message = {
+            registration_id: 'ddjMj9oUSMc:APA91bGl7qBxzhKM5mNMEMgJu9RovRY4lEZIWKBR7ZMbJ9xLwNWlSDhI0bZYeIw5JDijFn0TOkMOkHmCxfVdQTzfk7TH4m45-Im3VNfZPIYqHEUbRR8Q_2HUSDeridih8QDjXjpAFEKE', // required
+            collapse_key: 'Collapse key',
+            'data.title': options.title,
+            'data.body': options.body
+        };
+
+        gcm.send(message, function(err, messageId){
+            if (err) {
+                console.log("Something has gone wrong!");
+            } else {
+                console.log("Sent with message ID: ", messageId);
+            }
+        });
+
     },
     pushIos: function(options) {
       ios
-      .send(options.tokens, {
+      .send(['67c169321a6b8542985ab23c635b9be2a84a86d8e21273707ab216feba912e8c'], {
         title: options.title,
         body: options.body
       })
