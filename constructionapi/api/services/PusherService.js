@@ -24,8 +24,8 @@ var android = Pusher('android', {
 var ios = Pusher('ios', {
   device: [], // Array of string with device tokens
   provider: {
-    cert: 'cert.pem', // The filename of the connection certificate to load from disk
-    key: 'key.pem', // The filename of the connection key to load from disk
+    cert: 'devcert.pem', // The filename of the connection certificate to load from disk
+    key: 'devkey.pem', // The filename of the connection key to load from disk
     ca: [], // An array of trusted certificates
     pfx: '', // File path for private key, certificate and CA certs in PFX or PKCS12 format
     passphrase: '', // The passphrase for the connection key
