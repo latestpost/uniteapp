@@ -17,20 +17,14 @@ module.exports = {
   },
 
   push: function (req, res) {
-
     message = {};
     message.tokens =
      ['ddjMj9oUSMc:APA91bGl7qBxzhKM5mNMEMgJu9RovRY4lEZIWKBR7ZMbJ9xLwNWlSDhI0bZYeIw5JDijFn0TOkMOkHmCxfVdQTzfk7TH4m45-Im3VNfZPIYqHEUbRR8Q_2HUSDeridih8QDjXjpAFEKE'];
-    message.title = 'Test title';
-    message.body = 'Test message body';
+    message.title = req.query.title;
+    message.body = req.query.body;
     PusherService.pushAndroid(message);
     PusherService.pushIos(message);
 
-    Message.create(message, function Obj(err, o) {
-        if (err) {
-            console.log(err);
-        }
-    });
     res.status(200).send('Pushed notification');
 
   }
