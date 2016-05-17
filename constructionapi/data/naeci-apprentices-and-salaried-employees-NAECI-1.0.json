@@ -1,0 +1,41 @@
+[{
+  "category": "NAECI A.8(b)",
+  "title": "CATEGORISED WORK (1 – 3) RATES FOR EMPLOYED APPRENTICES",
+  "date": "From Monday 4 th January 2016",
+  "years": ["1st year", "2nd year", "3rd year", "4th year"],
+  "items": [{
+    "title": "Basic Pay",
+    "rates": [6.44, 8.34, 10.79, 13.01]
+  }, {
+    "title": "Night",
+    "rates": [8.15, 10.55, 13.65, 16.46]
+  }, {
+    "title": "Afternoons",
+    "rates": [7.59, 9.83, 12.72, 15.34]
+  }, {
+    "title": "Double day - Morning",
+    "rates": [7.48, 9.68, 12.53, 15.10]
+  }, {
+    "title": "Double day - Afternoons",
+    "rates": [7.98, 10.33, 13.37, 16.12]
+  }, {
+    "title": "3 shifts 5 days",
+    "rates": [7.88, 10.20, 13.20, 15.91]
+  }, {
+    "title": "3 Shifts 7 days",
+    "rates": [7.98, 10.33, 13.37, 16.12]
+  }, {
+    "title": "Rolling Shifts Days",
+    "rates": [7.73, 10.01, 12.95, 15.61]
+  }, {
+    "title": "Rolling Shifts Nights",
+    "rates": [8.50, 11.01, 14.24, 17.17]
+  }, {
+    "title": "Overtime A",
+    "rates": [9.02, 11.68, 15.11, 18.21]
+  }, {
+    "title": "Overtime B",
+    "rates": [11.59, 15.01, 19.42, 23.42]
+  }, ]
+
+}]

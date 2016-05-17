@@ -1,0 +1,40 @@
+[{
+  "category": "NAECI A.2(b)",
+  "title": "NATIONAL GUARANTEED WORK RATES FOR EMPLOYED APPRENTICES",
+  "date": "From Monday 9th January 2017",
+  "years": ["1st year", "2nd year", "3rd year", "4th year"],
+  "items": [{
+    "title": "Basic Pay",
+    "rates": [6.54, 8.46, 10.46, 12.22]
+  }, {
+    "title": "Night",
+    "rates": [8.27, 10.70, 13.23, 15.46]
+  }, {
+    "title": "Afternoons",
+    "rates": [7.71, 9.97, 12.33, 14.41]
+  }, {
+    "title": "Double day – Morning",
+    "rates": [7.59, 9.82, 12.14, 14.19]
+  }, {
+    "title": "Double day – Afternoons",
+    "rates": [8.10, 10.48, 12.96, 15.14]
+  }, {
+    "title": "3 shifts 5 days",
+    "rates": [8.00, 10.35, 12.79, 14.95]
+  }, {
+    "title": "3 Shifts 7 days",
+    "rates": [8.10, 10.48, 12.96, 15.14]
+  }, {
+    "title": "Rolling Shifts Days",
+    "rates": [7.85, 10.15, 12.55, 14.66]
+  }, {
+    "title": "Rolling Shifts Nights",
+    "rates": [8.63, 11.17, 13.81, 16.13]
+  }, {
+    "title": "Overtime A",
+    "rates": [9.16, 11.84, 14.64, 17.11]
+  }, {
+    "title": "Overtime B",
+    "rates": [11.77, 15.23, 18.83, 22.00]
+  }]
+}]

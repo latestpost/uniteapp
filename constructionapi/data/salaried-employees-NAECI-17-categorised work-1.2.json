@@ -1,0 +1,12 @@
+[{
+  "date": "From Monday 8th January 2018",
+  "grades": ["Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"],
+  "items": [{
+      "title": "Cats 1-3 Basic Hourly Rate",
+      "rates": [12.43, 14.10, 16.69, 17.39, 18.12]
+    }, {
+      "title": "Annualised Base Salary (38hrs x 52 wks)",
+      "rates": [24561.68, 27861.60, 32979.44, 34362.64, 35805.12]
+    }
+  ]
+}]
