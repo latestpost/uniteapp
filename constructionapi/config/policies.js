@@ -28,6 +28,10 @@ module.exports.policies = {
   '*': true // We dont need authorization here, allowing public access
 },
 
+'MessageController': {
+  '*': true // We dont need authorization here, allowing public access
+},
+
 'AuthController': {
   '*': true // We dont need authorization here, allowing public access
 },

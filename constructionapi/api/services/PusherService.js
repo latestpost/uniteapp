@@ -1,4 +1,6 @@
 // api/services/PusherService.js
+//https://github.com/ghaiklor/sails-service-pusher
+
 var Pusher = require("sails-service-pusher");
 
 var android = Pusher('android', {
@@ -53,16 +55,18 @@ var ios = Pusher('ios', {
 module.exports = {
     pushAndroid: function(options) {
       android
-        .send(['TOKEN_1', 'TOKEN_2'], {
-          body: 'You can override pre-defined'
+        .send(options.tokens, {
+          title: options.title,
+          body: options.body
         })
         .then(console.log.bind(console))
         .catch(console.error.bind(console));
     },
     pushIos: function(options) {
       ios
-      .send(['TOKEN_1', 'TOKEN_2'], {
-        body: 'You can override pre-defined'
+      .send(options.tokens, {
+        title: options.title,
+        body: options.body
       })
       .then(console.log.bind(console))
       .catch(console.error.bind(console));

@@ -12,6 +12,7 @@ let jobsURL = SERVER_URL + 'project',
     agreementsURL = SERVER_URL + 'agreement',
     trainingURL = SERVER_URL + 'training',
     newsURL = SERVER_URL + 'news',
+    messagesURL = SERVER_URL + 'message',
     loginURL = SERVER_URL + 'auth',
     registerURL = SERVER_URL + 'register/register'
     localStorage
@@ -45,6 +46,13 @@ export class RestService {
     findJobs() {
       // public access
       return this.http.get(jobsURL)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    findMessages() {
+      // public access
+      return this.http.get(messagesURL)
             .map(res => res.json())
             .catch(this.handleError);
     }

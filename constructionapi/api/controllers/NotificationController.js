@@ -18,6 +18,8 @@ module.exports = {
     res.json(200, {message: id + ' registered'});
   },
   push: function (req, res) {
+
+    /*
     var device_tokens = []; //create array for storing device tokens
 
     var retry_times = 4; //the number of times to retry sending the message if it fails
@@ -49,6 +51,13 @@ module.exports = {
     }, function (err) {
         res.status(500).send('failed to push notification ');
     });
+    */
+
+    message = {};
+    message.tokens = ['d-eBT04BIXs:APA91bGcILn-vS4BBPzv43W_Sd_p9FTb4qD5JvCta8VB7LXWjfxpiDR-6Uucsbyte9Zhy-mM24wdqFffJRGW_iDmB8yeficWtwPwj68ugwqTYoIyOklhQAOrP1-IgGh8ipo-irB_lT33'];
+    message.title = 'Test title';
+    message.body = 'Test message body';
+    PusherService.pushAndroid(message);
 
   }
 }

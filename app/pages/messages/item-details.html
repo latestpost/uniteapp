@@ -1,0 +1,15 @@
+<ion-navbar *navbar>
+    <button menuToggle *ngIf="!selectedItem">
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Message Details</ion-title>
+</ion-navbar>
+
+<ion-content padding>
+    <div *ngIf="selectedItem" class="job">
+        <b>{{selectedItem.title}}</b>
+        <div>
+            {{selectedItem.body}}
+        </div>
+    </div>
+</ion-content>

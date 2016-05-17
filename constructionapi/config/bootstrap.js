@@ -211,6 +211,17 @@ module.exports.bootstrap = function(cb) {
                     });
 
 
+                    var message = {
+                        title: 'Messages 1',
+                        body: 'Some notes'
+                    };
+
+                    Message.create(message, function Obj(err, o) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        console.log('message created: ', message);
+                    });
 
 
   // It's very important to trigger this callback method when you are finished
