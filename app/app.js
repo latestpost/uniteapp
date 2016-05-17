@@ -91,16 +91,20 @@ class MyApp {
         },
         windows: {}
       });
-      push.on('registration', (data) => {
-        console.log(data.registrationId);
-        this.registerId = data.registrationId;
-      });
-      push.on('notification', (data) => {
-        this.doAlert(data.title, data.message);
-      });
-      push.on('error', (e) => {
-        console.log(e.message);
-      });
+
+      if (typeof push != 'undefined') // stop errors in browser non-native
+      {
+        push.on('registration', (data) => {
+          console.log(data.registrationId);
+          this.registerId = data.registrationId;
+        });
+        push.on('notification', (data) => {
+          this.doAlert(data.title, data.message);
+        });
+        push.on('error', (e) => {
+          console.log(e.message);
+        });
+      }
     });
   }
 
