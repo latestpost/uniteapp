@@ -51,27 +51,25 @@ In addition to access to the above the App needs to have the following:
 Available as IOS and Android application in Itunes and Google Store
 Push notification of alerts
 
-RUN:
+## RUN:
 ```
 	npm install
 	cd constructionapi
 	npm install
 	rm -rf .tmp
 	sails lift
-	cd ..
-	ionic serve
 ```
 
-Dryden's TODO:
-```
-	add phonegap/cordova notification plugins
-
-        > Native ionic notifications added
-        >
-
-	add search input filter for each page
-
-        > I don't understand what the search bars are searching.
-        > Are they actually filtering the existing content "items" or searching an API?
+and
 
 ```
+$ ionic serve
+```
+
+## Dryden's TODO:
+
+
+
+Useful docs:
+
+* http://www.neilberry.com/how-to-run-your-ionic-app-on-real-devices/

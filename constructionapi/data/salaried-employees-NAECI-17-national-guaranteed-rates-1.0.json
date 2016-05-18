@@ -1,0 +1,13 @@
+[{
+  "date": "From Monday 4th January 2016",
+  "title": "National Guaranteed Rates",
+  "grades": ["Grade 2", "Grade 3", "Grade 4", "Grade 5", "Grade 6"],
+  "items": [{
+      "title": "NGR Basic Hourly Rate",
+      "rates": [10.64, 12.05, 14.12, 14.82, 15.51]
+    }, {
+      "title": "Annualised Base Salary (38hrs x 52 wks)",
+      "rates": [21024.64, 23810.80, 27901.12, 29284.32, 30647.76]
+    }
+  ]
+}]
