@@ -1,314 +1,313 @@
 [{
-        "tables": [{
-                    "title": "Radius Allowance 2016",
-                    "items": [{
-                        "bracketMiles": {
-                            "gt": 2,
-                            "lt": 8
-                        },
-                        "items": [{
-                            "taxed": 0.00,
-                            "taxFree": 0.00,
-                            "total": 0.00,
-                            "scale2": 0.00
-                        }]
-                    }, {
-                        "bracketMiles": {
-                            "gt": 8,
-                            "lt": 11
-                        },
-                        "items": [{
-                            "taxed": 2.62,
-                            "taxFree": 0.00,
-                            "total": 2.62,
-                            "scale2": 1.73
-                        }]
-                    }, {
-                        "bracketMiles": {
-                            "gt": 11,
-                            "lt": 14
-                        },
-                        "items": [{
-                            "taxed": 4.28,
-                            "taxFree": 1.02,
-                            "total": 5.30,
-                            "scale2": 3.45
-                        }]
-                    }, {
-                        "bracketMiles": {
-                            "gt": 14,
-                            "lt": 17
-                        },
-                        "items": [{
-                            "taxed": 6.94,
-                            "taxFree": 1.47,
-                            "total": 8.41,
-                            "scale2": 5.59
-                        }]
-                    }, {
-                        "bracketMiles": {
-                            "gt": 17,
-                            "lt": 20
-                        },
-                        "items": [{
-                            "taxed": 7.72,
-                            "taxFree": 3.35,
-                            "total": 11.07,
-                            "scale2": 7.31
-                        }]
-                    }, {
-                        "bracketMiles": {
-                            "gt": 20,
-                            "lt": 25
-                        },
-                        "items": [{
-                            "taxed": 8.90,
-                            "taxFree": 4.55,
-                            "total": 13.45,
-                            "scale2": 8.92
-                        }]
-                    }, {
-                        "bracketMiles": {
-                            "gt": 25,
-                            "lt": 30
-                        },
-                        "items": [{
-                            "taxed": 9.86,
-                            "taxFree": 5.49,
-                            "total": 15.35,
-                            "scale2": 10.10
-                        }]
-                    }, {
-                        "bracketMiles": {
-                            "gt": 30,
-                            "lt": 35
-                        },
-                        "items": [{
-                            "taxed": 10.66,
-                            "taxFree": 6.26,
-                            "total": 16.92,
-                            "scale2": 11.28
-                        }]
-                    }, {
-                        "bracketMiles": {
-                            "gt": 35,
-                            "lt": 99999
-                        },
-                        "items": [{
-                            "taxed": 11.38,
-                            "taxFree": 7.8,
-                            "total": 18.39,
-                            "scale2": 12.33
-                        }]
-                    }]
+    "tables": [{
+        "title": "Radius Allowance 2016",
+        "items": [{
+            "bracketMiles": {
+                "gt": 2,
+                "lt": 8
+            },
+            "items": [{
+                "taxed": 0.00,
+                "taxFree": 0.00,
+                "total": 0.00,
+                "scale2": 0.00
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 8,
+                "lt": 11
+            },
+            "items": [{
+                "taxed": 2.62,
+                "taxFree": 0.00,
+                "total": 2.62,
+                "scale2": 1.73
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 11,
+                "lt": 14
+            },
+            "items": [{
+                "taxed": 4.28,
+                "taxFree": 1.02,
+                "total": 5.30,
+                "scale2": 3.45
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 14,
+                "lt": 17
+            },
+            "items": [{
+                "taxed": 6.94,
+                "taxFree": 1.47,
+                "total": 8.41,
+                "scale2": 5.59
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 17,
+                "lt": 20
+            },
+            "items": [{
+                "taxed": 7.72,
+                "taxFree": 3.35,
+                "total": 11.07,
+                "scale2": 7.31
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 20,
+                "lt": 25
+            },
+            "items": [{
+                "taxed": 8.90,
+                "taxFree": 4.55,
+                "total": 13.45,
+                "scale2": 8.92
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 25,
+                "lt": 30
+            },
+            "items": [{
+                "taxed": 9.86,
+                "taxFree": 5.49,
+                "total": 15.35,
+                "scale2": 10.10
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 30,
+                "lt": 35
+            },
+            "items": [{
+                "taxed": 10.66,
+                "taxFree": 6.26,
+                "total": 16.92,
+                "scale2": 11.28
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 35,
+                "lt": 99999
+            },
+            "items": [{
+                "taxed": 11.38,
+                "taxFree": 7.8,
+                "total": 18.39,
+                "scale2": 12.33
+            }]
+        }]
+    }, {
+        "title": "Radius Allowance 2017",
+        "items": [
+
+
+            {
+                "bracketMiles": {
+                    "gt": 2,
+                    "lt": 8
                 },
-                [{
-                        "title": "Radius Allowance 2017",
-                        "items": [
-
-
-                            {
-                                "bracketMiles": {
-                                    "gt": 2,
-                                    "lt": 8
-                                },
-                                "items": [{
-                                    "taxed": 0.00,
-                                    "taxFree": 0.00,
-                                    "total": 0.00,
-                                    "scale2": 0.00
-                                }]
-                            }, {
-                                "bracketMiles": {
-                                    "gt": 8,
-                                    "lt": 11
-                                },
-                                "items": [{
-                                    "taxed": 2.67,
-                                    "taxFree": 0.00,
-                                    "total": 2.67,
-                                    "scale2": 1.76
-                                }]
-                            }, {
-                                "bracketMiles": {
-                                    "gt": 11,
-                                    "lt": 14
-                                },
-                                "items": [{
-                                    "taxed": 4.37,
-                                    "taxFree": 1.04,
-                                    "total": 5.41,
-                                    "scale2": 3.52
-                                }]
-                            }, {
-                                "bracketMiles": {
-                                    "gt": 14,
-                                    "lt": 17
-                                },
-                                "items": [{
-                                    "taxed": 7.08,
-                                    "taxFree": 1.50,
-                                    "total": 8.58,
-                                    "scale2": 5.70
-                                }]
-                            }, {
-                                "bracketMiles": {
-                                    "gt": 17,
-                                    "lt": 20
-                                },
-                                "items": [{
-                                    "taxed": 7.87,
-                                    "taxFree": 3.42,
-                                    "total": 11.29,
-                                    "scale2": 7.46
-                                }]
-                            }, {
-                                "bracketMiles": {
-                                    "gt": 20,
-                                    "lt": 25
-                                },
-                                "items": [{
-                                    "taxed": 9.08,
-                                    "taxFree": 4.64,
-                                    "total": 13.72,
-                                    "scale2": 9.10
-                                }]
-                            }, {
-                                "bracketMiles": {
-                                    "gt": 25,
-                                    "lt": 30
-                                },
-                                "items": [{
-                                    "taxed": 10.06,
-                                    "taxFree": 5.60,
-                                    "total": 15.66,
-                                    "scale2": 10.30
-                                }]
-                            }, {
-                                "bracketMiles": {
-                                    "gt": 30,
-                                    "lt": 35
-                                },
-                                "items": [{
-                                    "taxed": 10.86,
-                                    "taxFree": 6.40,
-                                    "total": 17.26,
-                                    "scale2": 11.51
-                                }]
-                            }, {
-                                "bracketMiles": {
-                                    "gt": 35,
-                                    "lt": 99999
-                                },
-                                "items": [{
-                                    "taxed": 11.61,
-                                    "taxFree": 7.15,
-                                    "total": 18.76,
-                                    "scale2": 12.58
-                                }]
-                            }
-                        ]
-                    },
-                    [{
-                        "title": "Radius Allowance 2018",
-                        "items": [{
-                            "bracketMiles": {
-                                "gt": 2,
-                                "lt": 8
-                            },
-                            "items": [{
-                                "taxed": 0.00,
-                                "taxFree": 0.00,
-                                "total": 0.00,
-                                "scale2": 0.00
-                            }]
-                        }, {
-                            "bracketMiles": {
-                                "gt": 8,
-                                "lt": 11
-                            },
-                            "items": [{
-                                "taxed": 2.74,
-                                "taxFree": 0.00,
-                                "total": 2.74,
-                                "scale2": 1.80
-                            }]
-                        }, {
-                            "bracketMiles": {
-                                "gt": 11,
-                                "lt": 14
-                            },
-                            "items": [{
-                                "taxed": 4.48,
-                                "taxFree": 1.07,
-                                "total": 5.55,
-                                "scale2": 3.61
-                            }]
-                        }, {
-                            "bracketMiles": {
-                                "gt": 14,
-                                "lt": 17
-                            },
-                            "items": [{
-                                "taxed": 7.25,
-                                "taxFree": 1.55,
-                                "total": 8.79,
-                                "scale2": 5.84
-                            }]
-                        }, {
-                            "bracketMiles": {
-                                "gt": 17,
-                                "lt": 20
-                            },
-                            "items": [{
-                                "taxed": 8.07,
-                                "taxFree": 3.51,
-                                "total": 11.57,
-                                "scale2": 7.65
-                            }]
-                        }, {
-                            "bracketMiles": {
-                                "gt": 20,
-                                "lt": 25
-                            },
-                            "items": [{
-                                "taxed": 9.31,
-                                "taxFree": 4.76,
-                                "total": 14.06,
-                                "scale2": 9.33
-                            }]
-                        }, {
-                            "bracketMiles": {
-                                "gt": 25,
-                                "lt": 30
-                            },
-                            "items": [{
-                                "taxed": 10.31,
-                                "taxFree": 5.74,
-                                "total": 16.05,
-                                "scale2": 10.56
-                            }]
-                        }, {
-                            "bracketMiles": {
-                                "gt": 30,
-                                "lt": 35
-                            },
-                            "items": [{
-                                "taxed": 11.13,
-                                "taxFree": 6.56,
-                                "total": 17.69,
-                                "scale2": 11.80
-                            }]
-                        }, {
-                            "bracketMiles": {
-                                "gt": 35,
-                                "lt": 99999
-                            },
-                            "items": [{
-                                "taxed": 11.9,
-                                "taxFree": 7.33,
-                                "total": 19.23,
-                                "scale2": 12.89
-                            }]
-                        }]
-                    }]
+                "items": [{
+                    "taxed": 0.00,
+                    "taxFree": 0.00,
+                    "total": 0.00,
+                    "scale2": 0.00
+                }]
+            }, {
+                "bracketMiles": {
+                    "gt": 8,
+                    "lt": 11
+                },
+                "items": [{
+                    "taxed": 2.67,
+                    "taxFree": 0.00,
+                    "total": 2.67,
+                    "scale2": 1.76
+                }]
+            }, {
+                "bracketMiles": {
+                    "gt": 11,
+                    "lt": 14
+                },
+                "items": [{
+                    "taxed": 4.37,
+                    "taxFree": 1.04,
+                    "total": 5.41,
+                    "scale2": 3.52
+                }]
+            }, {
+                "bracketMiles": {
+                    "gt": 14,
+                    "lt": 17
+                },
+                "items": [{
+                    "taxed": 7.08,
+                    "taxFree": 1.50,
+                    "total": 8.58,
+                    "scale2": 5.70
+                }]
+            }, {
+                "bracketMiles": {
+                    "gt": 17,
+                    "lt": 20
+                },
+                "items": [{
+                    "taxed": 7.87,
+                    "taxFree": 3.42,
+                    "total": 11.29,
+                    "scale2": 7.46
+                }]
+            }, {
+                "bracketMiles": {
+                    "gt": 20,
+                    "lt": 25
+                },
+                "items": [{
+                    "taxed": 9.08,
+                    "taxFree": 4.64,
+                    "total": 13.72,
+                    "scale2": 9.10
+                }]
+            }, {
+                "bracketMiles": {
+                    "gt": 25,
+                    "lt": 30
+                },
+                "items": [{
+                    "taxed": 10.06,
+                    "taxFree": 5.60,
+                    "total": 15.66,
+                    "scale2": 10.30
+                }]
+            }, {
+                "bracketMiles": {
+                    "gt": 30,
+                    "lt": 35
+                },
+                "items": [{
+                    "taxed": 10.86,
+                    "taxFree": 6.40,
+                    "total": 17.26,
+                    "scale2": 11.51
+                }]
+            }, {
+                "bracketMiles": {
+                    "gt": 35,
+                    "lt": 99999
+                },
+                "items": [{
+                    "taxed": 11.61,
+                    "taxFree": 7.15,
+                    "total": 18.76,
+                    "scale2": 12.58
+                }]
+            }
+        ]
+    }, {
+        "title": "Radius Allowance 2018",
+        "items": [{
+            "bracketMiles": {
+                "gt": 2,
+                "lt": 8
+            },
+            "items": [{
+                "taxed": 0.00,
+                "taxFree": 0.00,
+                "total": 0.00,
+                "scale2": 0.00
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 8,
+                "lt": 11
+            },
+            "items": [{
+                "taxed": 2.74,
+                "taxFree": 0.00,
+                "total": 2.74,
+                "scale2": 1.80
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 11,
+                "lt": 14
+            },
+            "items": [{
+                "taxed": 4.48,
+                "taxFree": 1.07,
+                "total": 5.55,
+                "scale2": 3.61
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 14,
+                "lt": 17
+            },
+            "items": [{
+                "taxed": 7.25,
+                "taxFree": 1.55,
+                "total": 8.79,
+                "scale2": 5.84
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 17,
+                "lt": 20
+            },
+            "items": [{
+                "taxed": 8.07,
+                "taxFree": 3.51,
+                "total": 11.57,
+                "scale2": 7.65
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 20,
+                "lt": 25
+            },
+            "items": [{
+                "taxed": 9.31,
+                "taxFree": 4.76,
+                "total": 14.06,
+                "scale2": 9.33
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 25,
+                "lt": 30
+            },
+            "items": [{
+                "taxed": 10.31,
+                "taxFree": 5.74,
+                "total": 16.05,
+                "scale2": 10.56
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 30,
+                "lt": 35
+            },
+            "items": [{
+                "taxed": 11.13,
+                "taxFree": 6.56,
+                "total": 17.69,
+                "scale2": 11.80
+            }]
+        }, {
+            "bracketMiles": {
+                "gt": 35,
+                "lt": 99999
+            },
+            "items": [{
+                "taxed": 11.9,
+                "taxFree": 7.33,
+                "total": 19.23,
+                "scale2": 12.89
+            }]
+        }]
+    }]
+}]
