@@ -1,24 +1,73 @@
 <ion-navbar *navbar>
-  <button menuToggle>
-    <ion-icon name="menu"></ion-icon>
-  </button>
-  <ion-title>Wage Rates</ion-title>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Wage Rates</ion-title>
 </ion-navbar>
 
 <ion-content>
-  <ion-searchbar [(ngModel)]="searchQuery" (input)="filterItems($event)"></ion-searchbar>
+  <div *ngFor="#rate of filteredItems1">
+        <div style="padding:16px;">
+            <div>
+                <h1>{{rate.name}}</h1></div>
+            <div>{{rate.date}}</div>
+        </div>
+        <ion-list>
+            <div ion-item>
+                <b>Year</b>
+                <div style="min-width:180px;" class="item-note" item-right>
+                    <div style="width:60px;float:left" *ngFor="#year of rate.years">{{year}} </div>
+                </div>
+            </div>
 
-  <ion-list>
-    <button ion-item *ngFor="#rate of filteredItems" (click)="itemTapped($event, rate)">
-      <ion-icon name="{{rate.icon}}" item-left></ion-icon>
-      {{rate.name}}
-      <div style="min-width:200px;" class="item-note" item-right>
-        <div style="width:70%;float:left;">{{rate.grade}}</div>
-        <div style="width:30%;float:left;">£{{rate.amount}}</div>
+            <div ion-item *ngFor="#item of rate.items">
+                {{item.name}}
+                <div style="min-width:180px;" class="item-note" item-right>
+                    <div style="width:60px;float:left" *ngFor="#ratedetail of item.rates">{{ratedetail}} </div>
+                </div>
+            </div>
+
+        </ion-list>
+    </div>
+
+    <div *ngFor="#rate of filteredItems2">
+        <div style="padding:16px;">
+            <div>{{rate.name}}</div>
+            <div>{{rate.date}}</div>
+        </div>
+        <ion-list>
+            <div ion-item>
+                <b>Grade</b>
+                <div style="min-width:180px;" class="item-note" item-right>
+                    <div style="width:60px;float:left" *ngFor="#grade of rate.grades">{{grade}} </div>
+                </div>
+            </div>
+
+            <div ion-item *ngFor="#item of rate.items">
+                {{item.name}}
+                <div style="min-width:180px;" class="item-note" item-right>
+                    <div style="font-size:0.6em;width:60px;float:left" *ngFor="#rate of item.rates">{{rate}} </div>
+                </div>
+            </div>
+        </ion-list>
+    </div>
+
+    <ion-list>
+        <div style="padding:16px;">
+            <h1>From 6/04/16 Weekly rate of accrual (up to 103 weeks)</h1></div>
+        <div ion-item>
+          <div style="padding:16px;">
+            <div style="float:left;width:120px">Age</div>
+            <div style="float:left;width:120px">Grade</div>
+            <div style="float:left;width:120px">Rate</div>
+        </div>
       </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+        <div ion-item  *ngFor="#rate of filteredItems3">
+            <div style="padding:16px;">
+                <div style="float:left;width:120px">{{rate.age}}</div>
+                <div style="float:left;width:120px">{{rate.grade}}</div>
+                <div style="float:left;width:120px">{{rate.rate}}</div>
+            </div>
+        </div>
+    </ion-list>
 </ion-content>
