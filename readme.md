@@ -72,4 +72,8 @@ $ ionic serve
 
 Useful docs:
 
+Notes
+
+android update sdk --no-ui --all --filter "extra-android-m2repository"
+
 * http://www.neilberry.com/how-to-run-your-ionic-app-on-real-devices/

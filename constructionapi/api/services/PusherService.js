@@ -58,7 +58,7 @@ module.exports = {
     pushAndroid: function(options) {
 
         var message = {
-            registration_id: 'ddjMj9oUSMc:APA91bGl7qBxzhKM5mNMEMgJu9RovRY4lEZIWKBR7ZMbJ9xLwNWlSDhI0bZYeIw5JDijFn0TOkMOkHmCxfVdQTzfk7TH4m45-Im3VNfZPIYqHEUbRR8Q_2HUSDeridih8QDjXjpAFEKE', // required
+            registration_id: options.token, // required
             collapse_key: 'Collapse key',
             'data.title': options.title,
             'data.body': options.body

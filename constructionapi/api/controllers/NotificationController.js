@@ -11,6 +11,7 @@ module.exports = {
 
   register: function (req, res) {
     var id = req.param('id');
+    var token = req.param('token');
     console.log('Register = ' + id);
     //**TODO store all tokens against user names
     res.json(200, {message: id + ' registered'});
@@ -18,14 +19,16 @@ module.exports = {
 
   push: function (req, res) {
     message = {};
-    message.tokens =
-     ['ddjMj9oUSMc:APA91bGl7qBxzhKM5mNMEMgJu9RovRY4lEZIWKBR7ZMbJ9xLwNWlSDhI0bZYeIw5JDijFn0TOkMOkHmCxfVdQTzfk7TH4m45-Im3VNfZPIYqHEUbRR8Q_2HUSDeridih8QDjXjpAFEKE'];
+    message.token =
+     [req.query.token];
     message.title = req.query.title;
     message.body = req.query.body;
+
+    console.log(message);
     PusherService.pushAndroid(message);
     PusherService.pushIos(message);
 
-    res.status(200).send('Pushed notification');
+    return res.json(200, message);
 
   }
 }
