@@ -43,6 +43,12 @@ export class RestService {
         .catch(this.handleError);
     }
 
+    addProject(data) {
+      return this.http.post(jobsURL, JSON.stringify(data), { headers: this.contentHeader })
+        .map(res => res.json())
+        .catch(this.handleError);
+    }
+
     findJobs() {
       // public access
       return this.http.get(jobsURL)
@@ -83,6 +89,12 @@ export class RestService {
       return this.http.get(agreementsURL)
             .map(res => res.json())
             .catch(this.handleError);
+    }
+
+    findSkills() {
+      return this.http.get(jobsURL)
+          .map(res => res.json())
+          .catch(this.handleError);
     }
 
     handleError(error) {
