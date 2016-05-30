@@ -7,10 +7,10 @@
   - [push.on('notification')](#pushonnotification-callback)
   - [push.on('error')](#pushonerror-callback)
 - [push.off()](#pushoffevent-callback)
-- [push.unregister()](#pushunregistersuccesshandler-errorhandler)
+- [push.unregister()](#pushunregistersuccesshandler-errorhandler-topics)
 - [push.setApplicationIconBadgeNumber()](#pushsetapplicationiconbadgenumbersuccesshandler-errorhandler-count---ios-only)
 - [push.getApplicationIconBadgeNumber()](#pushgetapplicationiconbadgenumbersuccesshandler-errorhandler---ios-only)
-- [push.finish()](#pushfinishsuccesshandler-errorhandler---ios-only)
+- [push.finish()](#pushfinishsuccesshandler-errorhandler-id---ios-only)
 
 ## PushNotification.init(options)
 
@@ -100,7 +100,9 @@ var push = PushNotification.init({
 });
 ```
 
-## PushNotification.hasPermission(successHandler)
+## PushNotification.hasPermission(successHandler) - Android & iOS only
+
+> Deprecated this method will be remove in release 2.0.0
 
 Checks whether the push notification permission has been granted.
 
@@ -180,9 +182,10 @@ Parameter | Type | Description
 `data.count` | `string` | The number of messages to be displayed in the badge iOS or message count in the notification shade in Android. For windows, it represents the value in the badge notification which could be a number or a status glyph.
 `data.sound` | `string` | The name of the sound file to be played upon receipt of the notification.
 `data.image` | `string` | The path of the image file to be displayed in the notification.
+`data.launchArgs` | `string` | The args to be passed to the application on launch from push notification. This works when notification is received in background. (Windows Only)
 `data.additionalData` | `Object` | An optional collection of data sent by the 3rd party push service that does not fit in the above properties.
 `data.additionalData.foreground` | `boolean` | Whether the notification was received while the app was in the foreground
-`data.additionalData.coldstart` | `boolean` | Will be `true` if the application is started by clicking on the push notification, `false` if the app is already started. (Android/iOS only)
+`data.additionalData.coldstart` | `boolean` | Will be `true` if the application is started by clicking on the push notification, `false` if the app is already started.
 
 ### Example
 
