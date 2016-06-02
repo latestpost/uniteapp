@@ -14,8 +14,8 @@ export class ProjectPage {
         this.app = app;
         this.restService = restService;
         this.projectForm = formBuilder.group({ // name should match [ngFormModel] in your html
-            title: ["Title", Validators.required], // Setting fields as required
-            description: ["LALALALA", Validators.required],
+            title: ["", Validators.required], // Setting fields as required
+            description: ["", Validators.required],
             startDate: ["12/10/2016", Validators.required],
             skillsetsneeded: []
         });
@@ -28,15 +28,16 @@ export class ProjectPage {
   }
 
   initializeItems() {
+    /*
+      Do we need to GET this from REST API?
+    */
     const dummyData = [
       { "name": "Labourer",     "checked": false },
       { "name": "Stonemason",   "checked": false },
       { "name": "Carpenter",    "checked": false },
       { "name": "Electrician",  "checked": false }
     ]
-    //this.restService.findSkills().subscribe((data) => {
-      this.skills = dummyData;
-    //});
+    this.skills = dummyData;
   }
 
   addProject(event) {
