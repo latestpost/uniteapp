@@ -883,10 +883,11 @@ var ProjectPage = exports.ProjectPage = (_dec = (0, _ionicAngular.Page)({
 
     this.app = app;
     this.restService = restService;
-    this.projectForm = formBuilder.group({ // name should match [ngFormModel] in your html
-      title: ["", _common.Validators.required], // Setting fields as required
-      description: ["", _common.Validators.required],
-      startDate: ["12/10/2016", _common.Validators.required],
+
+    this.projectForm = formBuilder.group({
+      title: ['', _common.Validators.minLength(2)],
+      description: ['', _common.Validators.minLength(2)],
+      startDate: this._getTodaysDate(),
       skillsetsneeded: []
     });
 
@@ -896,30 +897,51 @@ var ProjectPage = exports.ProjectPage = (_dec = (0, _ionicAngular.Page)({
   _createClass(ProjectPage, [{
     key: 'ngOnInit',
     value: function ngOnInit() {
-      this.initializeItems();
-    }
-  }, {
-    key: 'initializeItems',
-    value: function initializeItems() {
-      /*
-        Do we need to GET this from REST API?
-      */
-      var dummyData = [{ "name": "Labourer", "checked": false }, { "name": "Stonemason", "checked": false }, { "name": "Carpenter", "checked": false }, { "name": "Electrician", "checked": false }];
-      this.skills = dummyData;
+      this.skills = [{
+        "name": "Labourer",
+        "checked": false
+      }, {
+        "name": "Carpenter",
+        "checked": false
+      }, {
+        "name": "Foreman",
+        "checked": false
+      }, {
+        "name": "Electrician",
+        "checked": false
+      }];
     }
   }, {
     key: 'addProject',
     value: function addProject(event) {
       event.preventDefault();
-
       var project = this.projectForm.value;
+      // Only add checked skills to project
       project.skillsetsneeded = this.skills.filter(function (item) {
         return item.checked;
       });
-
+      // Send new project
       this.restService.addProject(project).subscribe(function (json) {
         console.log(json);
       });
+    }
+
+    /*
+      getTodaysDate();
+      Set the time of a project to start from todays date
+    */
+
+  }, {
+    key: '_getTodaysDate',
+    value: function _getTodaysDate() {
+      var today = new Date();
+      var days = today.getDate();
+      var month = today.getMonth() + 1; //January is 0!
+      var year = today.getFullYear();
+      if (days < 10) days = '0' + days;
+      if (month < 10) month = '0' + month;
+      today = year + '-' + month + '-' + days;
+      return today;
     }
   }]);
 
@@ -1245,13 +1267,6 @@ var RestService = exports.RestService = (_dec = (0, _core.Injectable)(), _dec(_c
         value: function findAgreements() {
             // public access
             return this.http.get(agreementsURL).map(function (res) {
-                return res.json();
-            }).catch(this.handleError);
-        }
-    }, {
-        key: 'findSkills',
-        value: function findSkills() {
-            return this.http.get(jobsURL).map(function (res) {
                 return res.json();
             }).catch(this.handleError);
         }

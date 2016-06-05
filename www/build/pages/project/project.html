@@ -14,37 +14,40 @@
 
 
 <ion-content padding class="getting-started">
-    <searchbar></searchbar>
 
     <h3>Unite4Jobs - Construction - Add New Project</h3>
 
-    <ion-content>
-        <form [ngFormModel]="projectForm" (submit)="addProject($event)">
+        <form [ngFormModel]="projectForm" (submit)="addProject($event)" novalidate>
 
-            <ion-item>
-                <ion-label fixed>Title</ion-label>
-                <ion-input type="text" ngControl="title"></ion-input>
-            </ion-item>
+            <ion-item-group>
+              <ion-item>
+                  <ion-label fixed>Title</ion-label>
+                  <ion-input type="text" ngControl="title" required></ion-input>
+              </ion-item>
 
-            <ion-item *ngFor="#skill of skills">
-              <ion-label>{{ skill.name }}</ion-label>
-              <ion-checkbox [(ngModel)]="skill.checked"></ion-checkbox>
-            </ion-item>
+              <ion-item>
+                  <ion-label fixed>Description</ion-label>
+                  <ion-textarea ngControl="description" required></ion-textarea>
+              </ion-item>
+            </ion-item-group>
 
-            <label class="item item-input">
-              <span class="input-label">Start date</span>
-              <input type="date" ngControl="startDate">
-            </label>
+            <ion-item-group>
+              <ion-item *ngFor="#skill of skills">
+                <ion-label>{{ skill.name }}</ion-label>
+                <ion-checkbox [(ngModel)]="skill.checked"></ion-checkbox>
+              </ion-item>
+            </ion-item-group>
 
-            <ion-item>
-                <ion-label fixed>Description</ion-label>
-                <ion-textarea ngControl="description"></ion-textarea>
-            </ion-item>
+            <ion-item-group>
+              <label class="item item-input">
+                <span class="input-label">Start date</span>
+                <input type="date" ngControl="startDate">
+              </label>
+            </ion-item-group>
 
             <div padding>
-                <button block type="submit">Add project</button>
+                <button block type="submit" [disabled]="!projectForm.valid">Add project</button>
             </div>
         </form>
-    </ion-content>
 
 </ion-content>
