@@ -6,6 +6,11 @@
     "config_munge": {
         "files": {}
     },
-    "installed_plugins": {},
+    "installed_plugins": {
+        "phonegap-plugin-push": {
+            "SENDER_ID": "1036416855963",
+            "PACKAGE_NAME": "uk.co.unite4jobs.app"
+        }
+    },
     "dependent_plugins": {}
 }
