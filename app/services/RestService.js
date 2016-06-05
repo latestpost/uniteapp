@@ -91,12 +91,6 @@ export class RestService {
             .catch(this.handleError);
     }
 
-    findSkills() {
-      return this.http.get(jobsURL)
-          .map(res => res.json())
-          .catch(this.handleError);
-    }
-
     handleError(error) {
         console.error(error);
         return Observable.throw(error.json().error || 'Server error');
