@@ -1,4 +1,4 @@
-import {Page,IonicApp, Alert} from 'ionic-angular';
+import {Page, IonicApp} from 'ionic-angular';
 import {RestService} from '../../services/RestService';
 import {FormBuilder, Validators} from 'angular2/common';
 import {Storage, LocalStorage} from 'ionic-angular';
