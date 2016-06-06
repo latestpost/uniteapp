@@ -1,5 +1,9 @@
 <style>
-.formInput {padding:8px; min-width:400px;margin:4px 0px 0px 0px;}
+    .formInput {
+        padding: 8px;
+        min-width: 400px;
+        margin: 4px 0px 0px 0px;
+    }
 </style>
 <ion-navbar *navbar>
     <button menuToggle>
@@ -10,19 +14,40 @@
 
 
 <ion-content padding class="getting-started">
-    <searchbar></searchbar>
 
     <h3>Unite4Jobs - Construction - Add New Project</h3>
 
-    <form [ngFormModel]="projectForm" (submit)="addProject($event)">
-            <input class="formInput" type="text" placeholder="project title" ngControl="title">
-            <br/>
-            <input class="formInput" type="text" placeholder="date start" ngControl="startDate">
-            <br/>
-            <textarea class="formInput" placeholder="description" ngControl="description"></textarea>
-        <div padding>
-            <button block type="submit">Add Project</button>
-        </div>
-    </form>
+        <form [ngFormModel]="projectForm" (submit)="addProject($event)" novalidate>
+
+            <ion-item-group>
+              <ion-item>
+                  <ion-label fixed>Title</ion-label>
+                  <ion-input type="text" ngControl="title" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-label fixed>Description</ion-label>
+                  <ion-textarea ngControl="description" required></ion-textarea>
+              </ion-item>
+            </ion-item-group>
+
+            <ion-item-group>
+              <ion-item *ngFor="#skill of skills">
+                <ion-label>{{ skill.name }}</ion-label>
+                <ion-checkbox [(ngModel)]="skill.checked"></ion-checkbox>
+              </ion-item>
+            </ion-item-group>
+
+            <ion-item-group>
+              <label class="item item-input">
+                <span class="input-label">Start date</span>
+                <input type="date" ngControl="startDate">
+              </label>
+            </ion-item-group>
+
+            <div padding>
+                <button block type="submit" [disabled]="!projectForm.valid">Add project</button>
+            </div>
+        </form>
 
 </ion-content>

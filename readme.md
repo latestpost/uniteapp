@@ -51,29 +51,17 @@ In addition to access to the above the App needs to have the following:
 Available as IOS and Android application in Itunes and Google Store
 Push notification of alerts
 
-## RUN:
+RUN:
 ```
 	npm install
 	cd constructionapi
 	npm install
 	rm -rf .tmp
 	sails lift
+	cd ..
+	ionic serve
 ```
 
-and
+Dryden's TODO:
 
-```
-$ ionic serve
-```
-
-## Dryden's TODO:
-
-
-
-Useful docs:
-
-Notes
-
-android update sdk --no-ui --all --filter "extra-android-m2repository"
-
-* http://www.neilberry.com/how-to-run-your-ionic-app-on-real-devices/
+* [Ionic2 - Forms](https://blog.khophi.co/ionic-2-forms-getting-started-right-way/)
