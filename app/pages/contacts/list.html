@@ -2,14 +2,14 @@
   <button menuToggle>
     <ion-icon name="menu"></ion-icon>
   </button>
-  <ion-title>Contacts</ion-title>
+  <ion-title>Reps Contact List</ion-title>
 </ion-navbar>
 
 <ion-content>
-  <searchbar></searchbar>
+  <ion-searchbar [(ngModel)]="searchQuery" (input)="filterItems($event)"></ion-searchbar>
 
   <ion-list>
-    <button ion-item *ngFor="#contact of contacts" (click)="itemTapped($event, contact)">
+    <button ion-item *ngFor="#contact of filteredItems" (click)="itemTapped($event, contact)">
       {{contact.lastname}}, {{contact.firstname}} {{contact.email}}  - {{contact.position}}
       <div class="item-note" item-right>
       </div>
