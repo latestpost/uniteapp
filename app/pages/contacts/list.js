@@ -20,7 +20,7 @@ export class ContactsPage {
   }
 
   ngOnInit() {
-        this.restService.findContacts().subscribe(
+        this.restService.findUsers().subscribe(
             data => this.contacts = data
         );
     }

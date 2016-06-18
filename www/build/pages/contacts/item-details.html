@@ -2,15 +2,15 @@
     <button menuToggle *ngIf="!selectedItem">
         <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>contact Details</ion-title>
+    <ion-title>Contact Details</ion-title>
 </ion-navbar>
 
 <ion-content>
     <div *ngIf="selectedItem" class="job">
-        <b>{{selectedItem.title}}</b>
+        <b>{{selectedItem.email}}</b>
         <ion-icon name="{{selectedItem.icon}}"></ion-icon>
         <div>
-            {{selectedItem.description}}
+            {{selectedItem.position}}
         </div>
     </div>
 </ion-content>

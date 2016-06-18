@@ -14,6 +14,7 @@ let jobsURL = SERVER_URL + 'project',
     newsURL = SERVER_URL + 'news',
     messagesURL = SERVER_URL + 'message',
     loginURL = SERVER_URL + 'auth',
+    userURL = 'http://www.unite4jobs.co.uk/userFeed',
     registerURL = SERVER_URL + 'register/register'
     localStorage
 
@@ -52,6 +53,12 @@ export class RestService {
     findJobs() {
       // public access
       return this.http.get(jobsURL)
+            .map(res => res.json())
+            .catch(this.handleError);
+    }
+
+    findUsers() {
+      return this.http.get(userURL)
             .map(res => res.json())
             .catch(this.handleError);
     }
