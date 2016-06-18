@@ -15,38 +15,47 @@ export class ProjectPage {
       [FormBuilder]
     ];
   }
-  
+
 
   constructor(app, restService, formBuilder, validators) {
     this.app = app;
+    this.formbuilder = formBuilder;
     this.restService = restService;
+    this.skills = [];
+    this.status = 'Please add details';
+  }
 
-    this.projectForm = formBuilder.group({
+  buildForm() {
+    this.skills = [
+      {
+        "name": "Painter",
+        "checked": false
+      }, {
+        "name": "Labourer",
+        "checked": false
+      }, {
+        "name": "Carpenter",
+        "checked": false
+      }, {
+        "name": "Foreman",
+        "checked": false
+      }, {
+        "name": "Electrician",
+        "checked": false
+      }]
+
+    this.projectForm = this.formbuilder.group({
       title: ['', Validators.minLength(2)],
       description: ['', Validators.minLength(2)],
+      location: ['', Validators.minLength(2)],
       startDate: this._getTodaysDate(),
       skillsetsneeded: []
     });
-
-    this.skills = [];
   }
 
   ngOnInit() {
-    this.skills = [{
-      "name": "Labourer",
-      "checked": false
-    }, {
-      "name": "Carpenter",
-      "checked": false
-    }, {
-      "name": "Foreman",
-      "checked": false
-    }, {
-      "name": "Electrician",
-      "checked": false
-    }]
+        this.buildForm();
   }
-
 
   addProject(event) {
     event.preventDefault();
@@ -58,10 +67,11 @@ export class ProjectPage {
     // Send new project
     this.restService.addProject(project)
       .subscribe((json) => {
-        console.log(json)
+        console.log(json);
+        this.status='Successfully added project';
+        this.buildForm();
       });
   }
-
 
   /*
     getTodaysDate();
@@ -77,6 +87,4 @@ export class ProjectPage {
     today = year + '-' + month + '-' + days;
     return today;
   }
-
-
 }

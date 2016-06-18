@@ -16,19 +16,25 @@
 <ion-content padding class="getting-started">
 
     <h3>Unite4Jobs - Construction - Add New Project</h3>
-
+        {{status}}
         <form [ngFormModel]="projectForm" (submit)="addProject($event)" novalidate>
 
             <ion-item-group>
               <ion-item>
                   <ion-label fixed>Title</ion-label>
-                  <ion-input type="text" ngControl="title" required></ion-input>
+                  <ion-input placeholder="Your job title" type="text" ngControl="title" required></ion-input>
               </ion-item>
 
               <ion-item>
                   <ion-label fixed>Description</ion-label>
-                  <ion-textarea ngControl="description" required></ion-textarea>
+                  <ion-textarea placeholder="Brief description of project" ngControl="description" required></ion-textarea>
               </ion-item>
+
+              <ion-item>
+                  <ion-label fixed>Location</ion-label>
+                  <ion-input placeholder="Postcode" ngControl="location" required></ion-input>
+              </ion-item>
+
             </ion-item-group>
 
             <ion-item-group>
