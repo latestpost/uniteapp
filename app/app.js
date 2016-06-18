@@ -69,7 +69,7 @@ class MyApp {
 
     this.rootPage = LoginPage;
     if (this.loggedIn){
-      this.rootPage = ProjectPage;
+      this.rootPage = HomePage;
       this.setLoggedin(); //** TODO remove at some point
     }
   }
