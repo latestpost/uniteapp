@@ -10,7 +10,7 @@
 
   <ion-list>
     <button ion-item *ngFor="#contact of filteredItems" (click)="itemTapped($event, contact)">
-      {{contact.lastname}}, {{contact.firstname}} {{contact.email}}  - {{contact.position}}
+      <b>{{contact.lastname}}, {{contact.firstname}}</b> {{contact.email}}  - {{contact.position}}
       <div class="item-note" item-right>
       </div>
     </button>
