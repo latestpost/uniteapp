@@ -25,12 +25,13 @@ export class LoginPage {
       credentials.email = this.loginForm.value.email;
       credentials.password = this.loginForm.value.password;
 
+      //this.app.main.setLoggedout();
+
       //**TODO auto login from storage
-      credentials.email = 'test@test.com';
-      credentials.password = 'test';
       credentials.notificationId = this.app.registerId;
       this.restService.login(credentials)
           .subscribe((json) => {
+            console.log(json);
               // store jwt token
               let token = json.token;
               this.localStorage.set('id_token', token);

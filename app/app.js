@@ -129,7 +129,12 @@ class MyApp {
   }
 
   setLoggedin(){
-    this.pages = AUTHORIZED_PAGES;
+    this.pages  = AUTHORIZED_PAGES;
     this.loggedIn = true;
+  }
+
+  setLoggedout(){
+    this.pages = UNAUTHORIZED_PAGES;
+    this.loggedIn = false;
   }
 }

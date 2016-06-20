@@ -13,7 +13,7 @@ let jobsURL = SERVER_URL + 'project',
     trainingURL = SERVER_URL + 'training',
     newsURL = SERVER_URL + 'news',
     messagesURL = SERVER_URL + 'message',
-    loginURL = SERVER_URL + 'auth',
+    loginURL = 'http://www.unite4jobs.co.uk/login/login_unite_json',
     userURL = 'http://www.unite4jobs.co.uk/userFeed',
     registerURL = SERVER_URL + 'register/register'
     localStorage
