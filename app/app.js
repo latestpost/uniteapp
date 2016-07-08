@@ -27,12 +27,12 @@ let UNAUTHORIZED_PAGES = [
 let AUTHORIZED_PAGES = [
     { path: '/home', icon: 'home', title: 'Home', component: HomePage },
     { path: '/contact', icon: 'contact', title: 'Reps Contact List', component: ContactsPage },
-    { path: '/document', icon: 'document', title: 'Construction Agreements', component: AgreementsPage },
+    //{ path: '/document', icon: 'document', title: 'Construction Agreements', component: AgreementsPage },
     { path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: RatesPage },
-    { path: '/basket', icon: 'basket', title: 'News Feed', component: NewsPage },
-    { path: '/calendar', icon: 'calendar', title: 'Training', component: TrainingPage },
+    //{ path: '/basket', icon: 'basket', title: 'News Feed', component: NewsPage },
+    //{ path: '/calendar', icon: 'calendar', title: 'Training', component: TrainingPage },
     { path: '/people', icon: 'people', title: 'Search Jobs', component: JobsPage },
-    { path: '/messages', icon: 'wifi', title: 'Messages', component: MessagesPage },
+    //{ path: '/messages', icon: 'wifi', title: 'Messages', component: MessagesPage },
     { path: '/project', icon: 'project', title: 'Add Project', component: ProjectPage } // TODO: Needs Icon
 ];
 

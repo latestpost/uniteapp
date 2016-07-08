@@ -41,7 +41,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var UNAUTHORIZED_PAGES = [{ path: '/login', icon: 'login', title: 'Login', component: _login.LoginPage }];
 
-var AUTHORIZED_PAGES = [{ path: '/home', icon: 'home', title: 'Home', component: _homepage.HomePage }, { path: '/contact', icon: 'contact', title: 'Reps Contact List', component: _list2.ContactsPage }, { path: '/document', icon: 'document', title: 'Construction Agreements', component: _list.AgreementsPage }, { path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: _list6.RatesPage }, { path: '/basket', icon: 'basket', title: 'News Feed', component: _list5.NewsPage }, { path: '/calendar', icon: 'calendar', title: 'Training', component: _list7.TrainingPage }, { path: '/people', icon: 'people', title: 'Search Jobs', component: _list4.JobsPage }, { path: '/messages', icon: 'wifi', title: 'Messages', component: _list3.MessagesPage }, { path: '/project', icon: 'project', title: 'Add Project', component: _project.ProjectPage } // TODO: Needs Icon
+var AUTHORIZED_PAGES = [{ path: '/home', icon: 'home', title: 'Home', component: _homepage.HomePage }, { path: '/contact', icon: 'contact', title: 'Reps Contact List', component: _list2.ContactsPage },
+//{ path: '/document', icon: 'document', title: 'Construction Agreements', component: AgreementsPage },
+{ path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: _list6.RatesPage },
+//{ path: '/basket', icon: 'basket', title: 'News Feed', component: NewsPage },
+//{ path: '/calendar', icon: 'calendar', title: 'Training', component: TrainingPage },
+{ path: '/people', icon: 'people', title: 'Search Jobs', component: _list4.JobsPage },
+//{ path: '/messages', icon: 'wifi', title: 'Messages', component: MessagesPage },
+{ path: '/project', icon: 'project', title: 'Add Project', component: _project.ProjectPage } // TODO: Needs Icon
 ];
 
 // http://ionicframework.com/docs/v2/api/config/Config/
@@ -147,6 +154,12 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
     value: function setLoggedin() {
       this.pages = AUTHORIZED_PAGES;
       this.loggedIn = true;
+    }
+  }, {
+    key: 'setLoggedout',
+    value: function setLoggedout() {
+      this.pages = UNAUTHORIZED_PAGES;
+      this.loggedIn = false;
     }
   }]);
 
@@ -596,7 +609,7 @@ var JobsPage = exports.JobsPage = (_dec = (0, _ionicAngular.Page)({
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.LoginPage = undefined;
 
@@ -613,52 +626,53 @@ var _common = require('angular2/common');
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
-    templateUrl: 'build/pages/login/login.html',
-    providers: [_RestService.RestService]
+  templateUrl: 'build/pages/login/login.html',
+  providers: [_RestService.RestService]
 }), _dec(_class = function () {
-    _createClass(LoginPage, null, [{
-        key: 'parameters',
-        get: function get() {
-            return [[_ionicAngular.IonicApp], [_RestService.RestService], [_common.FormBuilder]];
-        }
-    }]);
-
-    function LoginPage(app, restService, formBuilder, validators) {
-        _classCallCheck(this, LoginPage);
-
-        this.app = app;
-        this.restService = restService;
-        this.localStorage = new _ionicAngular.Storage(_ionicAngular.LocalStorage);
-        this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
-            email: ["", _common.Validators.required], // Setting fields as required
-            password: ["", _common.Validators.required]
-        });
+  _createClass(LoginPage, null, [{
+    key: 'parameters',
+    get: function get() {
+      return [[_ionicAngular.IonicApp], [_RestService.RestService], [_common.FormBuilder]];
     }
+  }]);
 
-    _createClass(LoginPage, [{
-        key: 'login',
-        value: function login() {
-            var _this = this;
+  function LoginPage(app, restService, formBuilder, validators) {
+    _classCallCheck(this, LoginPage);
 
-            var credentials = {};
-            credentials.email = this.loginForm.value.email;
-            credentials.password = this.loginForm.value.password;
+    this.app = app;
+    this.restService = restService;
+    this.localStorage = new _ionicAngular.Storage(_ionicAngular.LocalStorage);
+    this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
+      email: ["", _common.Validators.required], // Setting fields as required
+      password: ["", _common.Validators.required]
+    });
+  }
 
-            //**TODO auto login from storage
-            credentials.email = 'test@test.com';
-            credentials.password = 'test';
-            credentials.notificationId = this.app.registerId;
-            this.restService.login(credentials).subscribe(function (json) {
-                // store jwt token
-                var token = json.token;
-                _this.localStorage.set('id_token', token);
-                // set logged in status
-                _this.app.main.setLoggedin();
-            });
-        }
-    }]);
+  _createClass(LoginPage, [{
+    key: 'login',
+    value: function login() {
+      var _this = this;
 
-    return LoginPage;
+      var credentials = {};
+      credentials.email = this.loginForm.value.email;
+      credentials.password = this.loginForm.value.password;
+
+      //this.app.main.setLoggedout();
+
+      //**TODO auto login from storage
+      credentials.notificationId = this.app.registerId;
+      this.restService.login(credentials).subscribe(function (json) {
+        console.log(json);
+        // store jwt token
+        var token = json.token;
+        _this.localStorage.set('id_token', token);
+        // set logged in status
+        _this.app.main.setLoggedin();
+      });
+    }
+  }]);
+
+  return LoginPage;
 }()) || _class);
 
 },{"../../services/RestService":18,"angular2/common":149,"ionic-angular":468}],11:[function(require,module,exports){
@@ -1581,7 +1595,7 @@ var jobsURL = _config.SERVER_URL + 'project',
     trainingURL = _config.SERVER_URL + 'training',
     newsURL = _config.SERVER_URL + 'news',
     messagesURL = _config.SERVER_URL + 'message',
-    loginURL = _config.SERVER_URL + 'auth',
+    loginURL = 'http://www.unite4jobs.co.uk/login/login_unite_json',
     userURL = 'http://www.unite4jobs.co.uk/userFeed',
     registerURL = _config.SERVER_URL + 'register/register';
 localStorage;
