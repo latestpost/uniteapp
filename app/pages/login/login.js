@@ -14,9 +14,11 @@ export class LoginPage {
         this.app = app;
         this.restService = restService;
         this.localStorage = new Storage(LocalStorage);
+        this.storedUsername = this.localStorage.get('username')._result;
+        this.storedPassword = this.localStorage.get('password')._result;
         this.loginForm = formBuilder.group({ // name should match [ngFormModel] in your html
-            email: ["", Validators.required], // Setting fields as required
-            password: ["", Validators.required]
+            email: [this.storedUsername, Validators.required], // Setting fields as required
+            password: [this.storedPassword, Validators.required]
         });
   }
 
@@ -35,6 +37,9 @@ export class LoginPage {
               // store jwt token
               let token = json.token;
               this.localStorage.set('id_token', token);
+              this.localStorage.set('username', credentials.email);
+              this.localStorage.set('password', credentials.password);
+
               // set logged in status
               this.app.main.setLoggedin(json.user);
           });

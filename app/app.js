@@ -7,6 +7,8 @@ import {provide} from 'angular2/core';
 import {App, IonicApp, Platform, MenuController, Alert, NavController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 
+import {Storage, LocalStorage} from 'ionic-angular'
+
 import {AgreementsPage} from './pages/agreements/list';
 import {ContactsPage} from './pages/contacts/list';
 import {HomePage} from './pages/homepage/homepage';
