@@ -1,20 +1,22 @@
 import {Injectable} from 'angular2/core';
 import {SERVER_URL} from './config';
+import {LOCAL_URL} from './config';
+import {LIVE_URL} from './config';
 import {Storage, LocalStorage} from 'ionic-angular';
 import {Http, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from 'rxjs/Observable';
 import {AuthHttp, tokenNotExpired} from 'angular2-jwt';
 import 'rxjs/Rx';
 
-let jobsURL = SERVER_URL + 'project',
+let jobsURL = LOCAL_URL + 'feed/construction_project_jobs',
     contactsURL = SERVER_URL + 'contact',
     ratesURL = SERVER_URL + 'rate',
     agreementsURL = SERVER_URL + 'agreement',
     trainingURL = SERVER_URL + 'training',
     newsURL = SERVER_URL + 'news',
     messagesURL = SERVER_URL + 'message',
-    loginURL = 'http://www.unite4jobs.co.uk/login/login_unite_json',
-    userURL = 'http://www.unite4jobs.co.uk/userFeed',
+    loginURL = LOCAL_URL + 'login/login_unite_json',
+    userURL = LIVE_URL + 'userFeed',
     registerURL = SERVER_URL + 'register/register'
     localStorage
 

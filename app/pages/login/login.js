@@ -36,7 +36,7 @@ export class LoginPage {
               let token = json.token;
               this.localStorage.set('id_token', token);
               // set logged in status
-              this.app.main.setLoggedin();
+              this.app.main.setLoggedin(json.user);
           });
   }
 }

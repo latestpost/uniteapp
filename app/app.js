@@ -33,7 +33,7 @@ let AUTHORIZED_PAGES = [
     //{ path: '/calendar', icon: 'calendar', title: 'Training', component: TrainingPage },
     { path: '/people', icon: 'people', title: 'Search Jobs', component: JobsPage },
     //{ path: '/messages', icon: 'wifi', title: 'Messages', component: MessagesPage },
-    { path: '/project', icon: 'project', title: 'Add Project', component: ProjectPage } // TODO: Needs Icon
+    //{ path: '/project', icon: 'project', title: 'Add Project', component: ProjectPage } // TODO: Needs Icon
 ];
 
 @App({
@@ -50,6 +50,7 @@ let AUTHORIZED_PAGES = [
 })
 
 class MyApp {
+
   static get parameters() {
     return [[IonicApp], [Platform], [MenuController]];
   }
@@ -61,8 +62,9 @@ class MyApp {
     this.platform = platform;
     this.menu = menu;
     this.initializeApp();
-    this.loggedIn = true;
+    this.loggedIn = false;
     this.registerId = 0;
+    this.user = {};
 
     // set our app's pages
     this.app.pages = UNAUTHORIZED_PAGES;
@@ -128,9 +130,11 @@ class MyApp {
     nav.setRoot(page.component);
   }
 
-  setLoggedin(){
+  setLoggedin(user){
     this.pages  = AUTHORIZED_PAGES;
     this.loggedIn = true;
+    this.user = user;
+    this.rootPage = HomePage;
   }
 
   setLoggedout(){

@@ -16,6 +16,7 @@ export class HomePage {
     this.nav = nav;
     this.app = app;
     this.restService = restService;
+    this.user = app.user;
   }
 
   initializeItems() {

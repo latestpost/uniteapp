@@ -46,10 +46,7 @@ var AUTHORIZED_PAGES = [{ path: '/home', icon: 'home', title: 'Home', component:
 { path: '/wifi', icon: 'wifi', title: 'Wage Rates', component: _list6.RatesPage },
 //{ path: '/basket', icon: 'basket', title: 'News Feed', component: NewsPage },
 //{ path: '/calendar', icon: 'calendar', title: 'Training', component: TrainingPage },
-{ path: '/people', icon: 'people', title: 'Search Jobs', component: _list4.JobsPage },
-//{ path: '/messages', icon: 'wifi', title: 'Messages', component: MessagesPage },
-{ path: '/project', icon: 'project', title: 'Add Project', component: _project.ProjectPage } // TODO: Needs Icon
-];
+{ path: '/people', icon: 'people', title: 'Search Jobs', component: _list4.JobsPage }];
 
 // http://ionicframework.com/docs/v2/api/config/Config/
 var MyApp = (_dec = (0, _ionicAngular.App)({
@@ -77,8 +74,9 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
     this.platform = platform;
     this.menu = menu;
     this.initializeApp();
-    this.loggedIn = true;
+    this.loggedIn = false;
     this.registerId = 0;
+    this.user = {};
 
     // set our app's pages
     this.app.pages = UNAUTHORIZED_PAGES;
@@ -151,9 +149,11 @@ var MyApp = (_dec = (0, _ionicAngular.App)({
     }
   }, {
     key: 'setLoggedin',
-    value: function setLoggedin() {
+    value: function setLoggedin(user) {
       this.pages = AUTHORIZED_PAGES;
       this.loggedIn = true;
+      this.user = user;
+      this.rootPage = _homepage.HomePage;
     }
   }, {
     key: 'setLoggedout',
@@ -460,6 +460,7 @@ var HomePage = exports.HomePage = (_dec = (0, _ionicAngular.Page)({
     this.nav = nav;
     this.app = app;
     this.restService = restService;
+    this.user = app.user;
   }
 
   _createClass(HomePage, [{
@@ -667,7 +668,7 @@ var LoginPage = exports.LoginPage = (_dec = (0, _ionicAngular.Page)({
         var token = json.token;
         _this.localStorage.set('id_token', token);
         // set logged in status
-        _this.app.main.setLoggedin();
+        _this.app.main.setLoggedin(json.user);
       });
     }
   }]);
@@ -1588,15 +1589,15 @@ require('rxjs/Rx');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var jobsURL = _config.SERVER_URL + 'project',
+var jobsURL = _config.LOCAL_URL + 'feed/construction_project_jobs',
     contactsURL = _config.SERVER_URL + 'contact',
     ratesURL = _config.SERVER_URL + 'rate',
     agreementsURL = _config.SERVER_URL + 'agreement',
     trainingURL = _config.SERVER_URL + 'training',
     newsURL = _config.SERVER_URL + 'news',
     messagesURL = _config.SERVER_URL + 'message',
-    loginURL = 'http://www.unite4jobs.co.uk/login/login_unite_json',
-    userURL = 'http://www.unite4jobs.co.uk/userFeed',
+    loginURL = _config.LOCAL_URL + 'login/login_unite_json',
+    userURL = _config.LIVE_URL + 'userFeed',
     registerURL = _config.SERVER_URL + 'register/register';
 localStorage;
 
@@ -1709,6 +1710,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var SERVER_URL = exports.SERVER_URL = "http://localhost:1401/";
+var LOCAL_URL = exports.LOCAL_URL = "http://localhost:8000/";
+var LIVE_URL = exports.LIVE_URL = "http://www.unite4jobs.co.uk/";
 
 },{}],20:[function(require,module,exports){
 "use strict";
